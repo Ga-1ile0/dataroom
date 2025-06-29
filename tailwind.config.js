@@ -4,12 +4,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'gatur': ['Gatur', 'Inter', 'system-ui', 'sans-serif'],
-        'sans': ['Gatur', 'Inter', 'system-ui', 'sans-serif'],
+        'alfa': ['Alfa Slab One', 'Inter', 'system-ui', 'sans-serif'],
+        'sans': ['Alfa Slab One', 'Inter', 'system-ui', 'sans-serif'],
       },
-      fontWeight: {
-        'black': '900',
-      }
     },
   },
   plugins: [],
