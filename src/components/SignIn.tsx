@@ -129,10 +129,10 @@ export const SignIn: React.FC<SignInProps> = ({ onAuthenticate }) => {
           <div className="w-20 h-20 bg-[#FFF1D6] rounded-full border-4 border-black flex items-center justify-center mx-auto mb-4 transform -rotate-12">
             <Lock size={32} className="text-[#B74B28]" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-[#B74B28] mb-2 transform rotate-1">
+          <h1 className="text-6xl text-[#B74B28] mb-2 transform rotate-1">
             DataVault
           </h1>
-          <p className="text-lg text-[#B74B28] font-medium">
+          <p className="text-xl text-[#B74B28]">
             Secure Access Required
           </p>
         </div>
@@ -141,7 +141,7 @@ export const SignIn: React.FC<SignInProps> = ({ onAuthenticate }) => {
         <div className="bg-[#FFF1D6] p-8 rounded-[20px] border-4 border-black shadow-[8px_8px_0px_#000000] transform -rotate-1">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="code" className="block text-lg font-bold text-[#B74B28] mb-3">
+              <label htmlFor="code" className="block text-xl text-[#B74B28] mb-3">
                 Enter Access Code
               </label>
               <div className="relative">
@@ -157,7 +157,7 @@ export const SignIn: React.FC<SignInProps> = ({ onAuthenticate }) => {
                     }
                   }}
                   placeholder="10-digit code"
-                  className="w-full px-4 py-3 text-lg font-mono border-3 border-black rounded-[10px] focus:outline-none focus:border-[#fab049] bg-white text-[#B74B28] placeholder-gray-400"
+                  className="w-full px-4 py-3 text-xl font-mono border-3 border-black rounded-[10px] focus:outline-none focus:border-[#fab049] bg-white text-[#B74B28] placeholder-gray-400"
                   disabled={isInCooldown || isLoading}
                   maxLength={10}
                 />
@@ -170,7 +170,7 @@ export const SignIn: React.FC<SignInProps> = ({ onAuthenticate }) => {
                   {showCode ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
               </div>
-              <div className="mt-2 text-sm text-[#B74B28]">
+              <div className="mt-2 text-base text-[#B74B28]">
                 {code.length}/10 characters
               </div>
             </div>
@@ -178,14 +178,14 @@ export const SignIn: React.FC<SignInProps> = ({ onAuthenticate }) => {
             {error && (
               <div className="flex items-center gap-2 p-3 bg-red-100 border-2 border-red-500 rounded-[10px]">
                 <AlertCircle size={20} className="text-red-600" />
-                <span className="text-red-600 font-medium">{error}</span>
+                <span className="text-red-600 text-base">{error}</span>
               </div>
             )}
 
             {isInCooldown && (
               <div className="flex items-center gap-2 p-3 bg-yellow-100 border-2 border-yellow-500 rounded-[10px]">
                 <Timer size={20} className="text-yellow-600" />
-                <span className="text-yellow-600 font-medium">
+                <span className="text-yellow-600 text-base">
                   Cooldown active: {timeLeft}s remaining
                 </span>
               </div>
@@ -194,7 +194,7 @@ export const SignIn: React.FC<SignInProps> = ({ onAuthenticate }) => {
             <button
               type="submit"
               disabled={code.length !== 10 || isInCooldown || isLoading}
-              className="w-full bg-[#fab049] text-[#B74B28] rounded-[10px] border-2 border-black shadow-[5px_6px_0px_#000000] hover:shadow-[2px_3px_0px_#000000] hover:translate-x-[3px] hover:translate-y-[3px] transition-all duration-200 py-3 px-6 font-bold text-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-[5px_6px_0px_#000000] disabled:hover:translate-x-0 disabled:hover:translate-y-0"
+              className="w-full bg-[#fab049] text-[#B74B28] rounded-[10px] border-2 border-black shadow-[5px_6px_0px_#000000] hover:shadow-[2px_3px_0px_#000000] hover:translate-x-[3px] hover:translate-y-[3px] transition-all duration-200 py-3 px-6 text-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-[5px_6px_0px_#000000] disabled:hover:translate-x-0 disabled:hover:translate-y-0"
             >
               {isLoading ? (
                 <div className="flex items-center justify-center gap-2">
@@ -212,7 +212,7 @@ export const SignIn: React.FC<SignInProps> = ({ onAuthenticate }) => {
           {/* Attempt Counter */}
           {attempts > 0 && !isInCooldown && (
             <div className="mt-4 text-center">
-              <span className="text-sm text-[#B74B28]">
+              <span className="text-base text-[#B74B28]">
                 Attempts: {attempts}/3
               </span>
             </div>
@@ -224,9 +224,9 @@ export const SignIn: React.FC<SignInProps> = ({ onAuthenticate }) => {
           <div className="bg-[#7583FA] p-4 rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] transform rotate-1">
             <div className="flex items-center justify-center gap-2 mb-2">
               <CheckCircle size={20} className="text-white" />
-              <span className="text-white font-bold">Secure Access</span>
+              <span className="text-white text-lg">Secure Access</span>
             </div>
-            <p className="text-white text-sm">
+            <p className="text-white text-base">
               Your access code provides secure entry to confidential startup information.
             </p>
           </div>
@@ -234,7 +234,7 @@ export const SignIn: React.FC<SignInProps> = ({ onAuthenticate }) => {
 
         {/* Footer */}
         <div className="mt-8 text-center">
-          <p className="text-sm text-[#B74B28] opacity-75">
+          <p className="text-base text-[#B74B28] opacity-75">
             © 2024 Ferfie. All rights reserved.
           </p>
         </div>

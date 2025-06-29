@@ -150,7 +150,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
     return (
       <div className="mb-4">
         <div className="flex items-center justify-between mb-2">
-          <label className="text-sm font-bold text-[#B74B28]">{label}</label>
+          <label className="text-lg text-[#B74B28]">{label}</label>
           {!isEditing ? (
             <button
               onClick={handleStartEdit}
@@ -180,7 +180,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
             <textarea
               value={localValue}
               onChange={(e) => setLocalValue(e.target.value)}
-              className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] resize-none"
+              className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] resize-none text-lg"
               rows={3}
             />
           ) : (
@@ -188,15 +188,15 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
               type={type}
               value={localValue}
               onChange={(e) => setLocalValue(e.target.value)}
-              className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+              className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
             />
           )
         ) : (
           <div className="p-2 bg-gray-50 border-2 border-gray-200 rounded-[8px] min-h-[40px] flex items-center">
             {multiline ? (
-              <pre className="whitespace-pre-wrap text-sm">{value}</pre>
+              <pre className="whitespace-pre-wrap text-lg">{value}</pre>
             ) : (
-              <span>{value}</span>
+              <span className="text-lg">{value}</span>
             )}
           </div>
         )}
@@ -244,7 +244,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
   const renderOverviewTab = () => (
     <div className="space-y-6">
       <div className="bg-[#FFF1D6] p-6 rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000]">
-        <h3 className="text-xl font-bold text-[#B74B28] mb-4">Basic Information</h3>
+        <h3 className="text-2xl text-[#B74B28] mb-4">Basic Information</h3>
         <div className="grid md:grid-cols-2 gap-4">
           <EditableField 
             label="Company Name" 
@@ -329,7 +329,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
   const renderFinancialsTab = () => (
     <div className="space-y-6">
       <div className="bg-[#FFF1D6] p-6 rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000]">
-        <h3 className="text-xl font-bold text-[#B74B28] mb-4">Key Metrics</h3>
+        <h3 className="text-2xl text-[#B74B28] mb-4">Key Metrics</h3>
         <div className="grid md:grid-cols-2 gap-4">
           <EditableField 
             label="Annual Revenue" 
@@ -355,7 +355,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
       </div>
       
       <div className="bg-[#FFF1D6] p-6 rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000]">
-        <h3 className="text-xl font-bold text-[#B74B28] mb-4">Detailed Financials</h3>
+        <h3 className="text-2xl text-[#B74B28] mb-4">Detailed Financials</h3>
         <div className="grid md:grid-cols-2 gap-4">
           <EditableField 
             label="Revenue ($)" 
@@ -413,7 +413,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
   const renderMarketTab = () => (
     <div className="space-y-6">
       <div className="bg-[#FFF1D6] p-6 rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000]">
-        <h3 className="text-xl font-bold text-[#B74B28] mb-4">Market Size</h3>
+        <h3 className="text-2xl text-[#B74B28] mb-4">Market Size</h3>
         <div className="grid md:grid-cols-3 gap-4">
           <EditableField 
             label="TAM (Total Addressable Market)" 
@@ -435,7 +435,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
 
       <div className="bg-[#FFF1D6] p-6 rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000]">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold text-[#B74B28]">Competitors</h3>
+          <h3 className="text-2xl text-[#B74B28]">Competitors</h3>
           <Button 
             size="sm"
             onClick={() => addArrayItem(['market', 'competitors'], { name: '', type: 'Direct', description: '' })}
@@ -449,7 +449,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
           {tempData.market.competitors.map((competitor, index) => (
             <div key={index} className="p-4 bg-white rounded-[10px] border-2 border-black">
               <div className="flex items-center justify-between mb-3">
-                <h4 className="font-bold text-[#B74B28]">Competitor {index + 1}</h4>
+                <h4 className="text-xl text-[#B74B28]">Competitor {index + 1}</h4>
                 <button
                   onClick={() => removeArrayItem(['market', 'competitors'], index)}
                   className="p-1 text-red-600 hover:bg-red-100 rounded"
@@ -459,20 +459,20 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
               </div>
               <div className="grid md:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm font-bold text-[#B74B28] mb-1">Name</label>
+                  <label className="block text-lg text-[#B74B28] mb-1">Name</label>
                   <input
                     type="text"
                     value={competitor.name}
                     onChange={(e) => updateArrayItem(['market', 'competitors'], index, 'name', e.target.value)}
-                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#B74B28] mb-1">Type</label>
+                  <label className="block text-lg text-[#B74B28] mb-1">Type</label>
                   <select
                     value={competitor.type}
                     onChange={(e) => updateArrayItem(['market', 'competitors'], index, 'type', e.target.value)}
-                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                   >
                     <option value="Direct">Direct</option>
                     <option value="Indirect">Indirect</option>
@@ -481,11 +481,11 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                 </div>
               </div>
               <div className="mt-3">
-                <label className="block text-sm font-bold text-[#B74B28] mb-1">Description</label>
+                <label className="block text-lg text-[#B74B28] mb-1">Description</label>
                 <textarea
                   value={competitor.description}
                   onChange={(e) => updateArrayItem(['market', 'competitors'], index, 'description', e.target.value)}
-                  className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] resize-none"
+                  className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] resize-none text-lg"
                   rows={2}
                 />
               </div>
@@ -496,7 +496,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
 
       <div className="bg-[#FFF1D6] p-6 rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000]">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold text-[#B74B28]">Market Trends</h3>
+          <h3 className="text-2xl text-[#B74B28]">Market Trends</h3>
           <Button 
             size="sm"
             onClick={() => addArrayItem(['market', 'trends'], '')}
@@ -517,7 +517,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                   newTrends[index] = e.target.value;
                   updateNestedField(['market', 'trends'], newTrends);
                 }}
-                className="flex-1 p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                className="flex-1 p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                 placeholder="Enter market trend"
               />
               <button
@@ -537,7 +537,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
     <div className="space-y-6">
       <div className="bg-[#FFF1D6] p-6 rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000]">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold text-[#B74B28]">Leadership Team</h3>
+          <h3 className="text-2xl text-[#B74B28]">Leadership Team</h3>
           <Button 
             size="sm"
             onClick={() => addArrayItem(['team', 'leadership'], { name: '', role: '', background: '' })}
@@ -551,7 +551,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
           {tempData.team.leadership.map((member, index) => (
             <div key={index} className="p-4 bg-white rounded-[10px] border-2 border-black">
               <div className="flex items-center justify-between mb-3">
-                <h4 className="font-bold text-[#B74B28]">Leader {index + 1}</h4>
+                <h4 className="text-xl text-[#B74B28]">Leader {index + 1}</h4>
                 <button
                   onClick={() => removeArrayItem(['team', 'leadership'], index)}
                   className="p-1 text-red-600 hover:bg-red-100 rounded"
@@ -561,30 +561,30 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
               </div>
               <div className="grid md:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm font-bold text-[#B74B28] mb-1">Name</label>
+                  <label className="block text-lg text-[#B74B28] mb-1">Name</label>
                   <input
                     type="text"
                     value={member.name}
                     onChange={(e) => updateArrayItem(['team', 'leadership'], index, 'name', e.target.value)}
-                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#B74B28] mb-1">Role</label>
+                  <label className="block text-lg text-[#B74B28] mb-1">Role</label>
                   <input
                     type="text"
                     value={member.role}
                     onChange={(e) => updateArrayItem(['team', 'leadership'], index, 'role', e.target.value)}
-                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                   />
                 </div>
               </div>
               <div className="mt-3">
-                <label className="block text-sm font-bold text-[#B74B28] mb-1">Background</label>
+                <label className="block text-lg text-[#B74B28] mb-1">Background</label>
                 <textarea
                   value={member.background}
                   onChange={(e) => updateArrayItem(['team', 'leadership'], index, 'background', e.target.value)}
-                  className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] resize-none"
+                  className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] resize-none text-lg"
                   rows={2}
                 />
               </div>
@@ -595,7 +595,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
 
       <div className="bg-[#FFF1D6] p-6 rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000]">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold text-[#B74B28]">Advisory Board</h3>
+          <h3 className="text-2xl text-[#B74B28]">Advisory Board</h3>
           <Button 
             size="sm"
             onClick={() => addArrayItem(['team', 'advisors'], { name: '', background: '' })}
@@ -609,7 +609,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
           {tempData.team.advisors.map((advisor, index) => (
             <div key={index} className="p-4 bg-white rounded-[10px] border-2 border-black">
               <div className="flex items-center justify-between mb-3">
-                <h4 className="font-bold text-[#B74B28]">Advisor {index + 1}</h4>
+                <h4 className="text-xl text-[#B74B28]">Advisor {index + 1}</h4>
                 <button
                   onClick={() => removeArrayItem(['team', 'advisors'], index)}
                   className="p-1 text-red-600 hover:bg-red-100 rounded"
@@ -619,20 +619,20 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
               </div>
               <div className="grid md:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm font-bold text-[#B74B28] mb-1">Name</label>
+                  <label className="block text-lg text-[#B74B28] mb-1">Name</label>
                   <input
                     type="text"
                     value={advisor.name}
                     onChange={(e) => updateArrayItem(['team', 'advisors'], index, 'name', e.target.value)}
-                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#B74B28] mb-1">Background</label>
+                  <label className="block text-lg text-[#B74B28] mb-1">Background</label>
                   <textarea
                     value={advisor.background}
                     onChange={(e) => updateArrayItem(['team', 'advisors'], index, 'background', e.target.value)}
-                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] resize-none"
+                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] resize-none text-lg"
                     rows={2}
                   />
                 </div>
@@ -643,7 +643,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
       </div>
 
       <div className="bg-[#FFF1D6] p-6 rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000]">
-        <h3 className="text-xl font-bold text-[#B74B28] mb-4">Team Statistics</h3>
+        <h3 className="text-2xl text-[#B74B28] mb-4">Team Statistics</h3>
         <div className="grid md:grid-cols-2 gap-4">
           <EditableField 
             label="Total Employees" 
@@ -678,7 +678,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
     <div className="space-y-6">
       <div className="bg-[#FFF1D6] p-6 rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000]">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold text-[#B74B28]">Core Features</h3>
+          <h3 className="text-2xl text-[#B74B28]">Core Features</h3>
           <Button 
             size="sm"
             onClick={() => addArrayItem(['product', 'features'], '')}
@@ -699,7 +699,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                   newFeatures[index] = e.target.value;
                   updateNestedField(['product', 'features'], newFeatures);
                 }}
-                className="flex-1 p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                className="flex-1 p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                 placeholder="Enter feature"
               />
               <button
@@ -715,7 +715,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
 
       <div className="bg-[#FFF1D6] p-6 rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000]">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold text-[#B74B28]">Technology Stack</h3>
+          <h3 className="text-2xl text-[#B74B28]">Technology Stack</h3>
           <Button 
             size="sm"
             onClick={() => addArrayItem(['product', 'techStack'], '')}
@@ -736,7 +736,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                   newTechStack[index] = e.target.value;
                   updateNestedField(['product', 'techStack'], newTechStack);
                 }}
-                className="flex-1 p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                className="flex-1 p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                 placeholder="Enter technology"
               />
               <button
@@ -752,7 +752,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
 
       <div className="bg-[#FFF1D6] p-6 rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000]">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold text-[#B74B28]">Product Roadmap</h3>
+          <h3 className="text-2xl text-[#B74B28]">Product Roadmap</h3>
           <Button 
             size="sm"
             onClick={() => addArrayItem(['product', 'roadmap'], { quarter: '', features: [], status: 'Planned' })}
@@ -766,7 +766,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
           {tempData.product.roadmap.map((roadmap, index) => (
             <div key={index} className="p-4 bg-white rounded-[10px] border-2 border-black">
               <div className="flex items-center justify-between mb-3">
-                <h4 className="font-bold text-[#B74B28]">Roadmap {index + 1}</h4>
+                <h4 className="text-xl text-[#B74B28]">Roadmap {index + 1}</h4>
                 <button
                   onClick={() => removeArrayItem(['product', 'roadmap'], index)}
                   className="p-1 text-red-600 hover:bg-red-100 rounded"
@@ -776,21 +776,21 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
               </div>
               <div className="grid md:grid-cols-2 gap-3 mb-3">
                 <div>
-                  <label className="block text-sm font-bold text-[#B74B28] mb-1">Quarter</label>
+                  <label className="block text-lg text-[#B74B28] mb-1">Quarter</label>
                   <input
                     type="text"
                     value={roadmap.quarter}
                     onChange={(e) => updateArrayItem(['product', 'roadmap'], index, 'quarter', e.target.value)}
-                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                     placeholder="Q1 2025"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#B74B28] mb-1">Status</label>
+                  <label className="block text-lg text-[#B74B28] mb-1">Status</label>
                   <select
                     value={roadmap.status}
                     onChange={(e) => updateArrayItem(['product', 'roadmap'], index, 'status', e.target.value)}
-                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                   >
                     <option value="Planned">Planned</option>
                     <option value="In Progress">In Progress</option>
@@ -800,11 +800,11 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-bold text-[#B74B28] mb-1">Features (comma-separated)</label>
+                <label className="block text-lg text-[#B74B28] mb-1">Features (comma-separated)</label>
                 <textarea
                   value={roadmap.features.join(', ')}
                   onChange={(e) => updateArrayItem(['product', 'roadmap'], index, 'features', e.target.value.split(', ').filter(f => f.trim()))}
-                  className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] resize-none"
+                  className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] resize-none text-lg"
                   rows={2}
                   placeholder="Feature 1, Feature 2, Feature 3"
                 />
@@ -819,7 +819,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
   const renderLegalTab = () => (
     <div className="space-y-6">
       <div className="bg-[#FFF1D6] p-6 rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000]">
-        <h3 className="text-xl font-bold text-[#B74B28] mb-4">Corporate Information</h3>
+        <h3 className="text-2xl text-[#B74B28] mb-4">Corporate Information</h3>
         <div className="grid md:grid-cols-2 gap-4">
           <EditableField 
             label="Entity Type" 
@@ -847,7 +847,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
 
       <div className="bg-[#FFF1D6] p-6 rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000]">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold text-[#B74B28]">Intellectual Property</h3>
+          <h3 className="text-2xl text-[#B74B28]">Intellectual Property</h3>
           <Button 
             size="sm"
             onClick={() => addArrayItem(['legal', 'intellectualProperty'], { type: 'Patent', name: '', status: 'Planned' })}
@@ -861,7 +861,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
           {tempData.legal.intellectualProperty.map((ip, index) => (
             <div key={index} className="p-4 bg-white rounded-[10px] border-2 border-black">
               <div className="flex items-center justify-between mb-3">
-                <h4 className="font-bold text-[#B74B28]">IP {index + 1}</h4>
+                <h4 className="text-xl text-[#B74B28]">IP {index + 1}</h4>
                 <button
                   onClick={() => removeArrayItem(['legal', 'intellectualProperty'], index)}
                   className="p-1 text-red-600 hover:bg-red-100 rounded"
@@ -871,11 +871,11 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
               </div>
               <div className="grid md:grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-sm font-bold text-[#B74B28] mb-1">Type</label>
+                  <label className="block text-lg text-[#B74B28] mb-1">Type</label>
                   <select
                     value={ip.type}
                     onChange={(e) => updateArrayItem(['legal', 'intellectualProperty'], index, 'type', e.target.value)}
-                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                   >
                     <option value="Patent">Patent</option>
                     <option value="Trademark">Trademark</option>
@@ -884,20 +884,20 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#B74B28] mb-1">Name</label>
+                  <label className="block text-lg text-[#B74B28] mb-1">Name</label>
                   <input
                     type="text"
                     value={ip.name}
                     onChange={(e) => updateArrayItem(['legal', 'intellectualProperty'], index, 'name', e.target.value)}
-                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#B74B28] mb-1">Status</label>
+                  <label className="block text-lg text-[#B74B28] mb-1">Status</label>
                   <select
                     value={ip.status}
                     onChange={(e) => updateArrayItem(['legal', 'intellectualProperty'], index, 'status', e.target.value)}
-                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                   >
                     <option value="Planned">Planned</option>
                     <option value="Pending">Pending</option>
@@ -914,7 +914,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
 
       <div className="bg-[#FFF1D6] p-6 rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000]">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold text-[#B74B28]">Compliance & Certifications</h3>
+          <h3 className="text-2xl text-[#B74B28]">Compliance & Certifications</h3>
           <Button 
             size="sm"
             onClick={() => addArrayItem(['legal', 'compliance'], '')}
@@ -935,7 +935,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                   newCompliance[index] = e.target.value;
                   updateNestedField(['legal', 'compliance'], newCompliance);
                 }}
-                className="flex-1 p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                className="flex-1 p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                 placeholder="Enter compliance standard"
               />
               <button
@@ -955,7 +955,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
     <div className="space-y-6">
       <div className="bg-[#FFF1D6] p-6 rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000]">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold text-[#B74B28]">Key Performance Indicators</h3>
+          <h3 className="text-2xl text-[#B74B28]">Key Performance Indicators</h3>
           <Button 
             size="sm"
             onClick={() => addArrayItem(['metrics'], { label: '', value: '', change: '', trend: 'up' })}
@@ -969,7 +969,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
           {tempData.metrics.map((metric, index) => (
             <div key={index} className="p-4 bg-white rounded-[10px] border-2 border-black">
               <div className="flex items-center justify-between mb-3">
-                <h4 className="font-bold text-[#B74B28]">Metric {index + 1}</h4>
+                <h4 className="text-xl text-[#B74B28]">Metric {index + 1}</h4>
                 <button
                   onClick={() => removeArrayItem(['metrics'], index)}
                   className="p-1 text-red-600 hover:bg-red-100 rounded"
@@ -979,41 +979,41 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
               </div>
               <div className="grid md:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm font-bold text-[#B74B28] mb-1">Label</label>
+                  <label className="block text-lg text-[#B74B28] mb-1">Label</label>
                   <input
                     type="text"
                     value={metric.label}
                     onChange={(e) => updateArrayItem(['metrics'], index, 'label', e.target.value)}
-                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                     placeholder="e.g., Monthly Active Users"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#B74B28] mb-1">Value</label>
+                  <label className="block text-lg text-[#B74B28] mb-1">Value</label>
                   <input
                     type="text"
                     value={metric.value}
                     onChange={(e) => updateArrayItem(['metrics'], index, 'value', e.target.value)}
-                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                     placeholder="e.g., 1,250"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#B74B28] mb-1">Change</label>
+                  <label className="block text-lg text-[#B74B28] mb-1">Change</label>
                   <input
                     type="text"
                     value={metric.change}
                     onChange={(e) => updateArrayItem(['metrics'], index, 'change', e.target.value)}
-                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                     placeholder="e.g., +15%"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#B74B28] mb-1">Trend</label>
+                  <label className="block text-lg text-[#B74B28] mb-1">Trend</label>
                   <select
                     value={metric.trend}
                     onChange={(e) => updateArrayItem(['metrics'], index, 'trend', e.target.value)}
-                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                   >
                     <option value="up">Up</option>
                     <option value="down">Down</option>
@@ -1031,7 +1031,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
   const renderFundingTab = () => (
     <div className="space-y-6">
       <div className="bg-[#FFF1D6] p-6 rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000]">
-        <h3 className="text-xl font-bold text-[#B74B28] mb-4">Funding Overview</h3>
+        <h3 className="text-2xl text-[#B74B28] mb-4">Funding Overview</h3>
         <div className="grid md:grid-cols-2 gap-4">
           <EditableField 
             label="Total Raised" 
@@ -1064,7 +1064,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
 
       <div className="bg-[#FFF1D6] p-6 rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000]">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold text-[#B74B28]">Investor Portfolio</h3>
+          <h3 className="text-2xl text-[#B74B28]">Investor Portfolio</h3>
           <Button 
             size="sm"
             onClick={() => addArrayItem(['funding', 'investors'], { name: '', type: 'Angel', amount: '' })}
@@ -1078,7 +1078,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
           {tempData.funding.investors.map((investor, index) => (
             <div key={index} className="p-4 bg-white rounded-[10px] border-2 border-black">
               <div className="flex items-center justify-between mb-3">
-                <h4 className="font-bold text-[#B74B28]">Investor {index + 1}</h4>
+                <h4 className="text-xl text-[#B74B28]">Investor {index + 1}</h4>
                 <button
                   onClick={() => removeArrayItem(['funding', 'investors'], index)}
                   className="p-1 text-red-600 hover:bg-red-100 rounded"
@@ -1088,20 +1088,20 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
               </div>
               <div className="grid md:grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-sm font-bold text-[#B74B28] mb-1">Name</label>
+                  <label className="block text-lg text-[#B74B28] mb-1">Name</label>
                   <input
                     type="text"
                     value={investor.name}
                     onChange={(e) => updateArrayItem(['funding', 'investors'], index, 'name', e.target.value)}
-                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#B74B28] mb-1">Type</label>
+                  <label className="block text-lg text-[#B74B28] mb-1">Type</label>
                   <select
                     value={investor.type}
                     onChange={(e) => updateArrayItem(['funding', 'investors'], index, 'type', e.target.value)}
-                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                   >
                     <option value="Angel">Angel</option>
                     <option value="VC">VC</option>
@@ -1110,12 +1110,12 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#B74B28] mb-1">Amount</label>
+                  <label className="block text-lg text-[#B74B28] mb-1">Amount</label>
                   <input
                     type="text"
                     value={investor.amount}
                     onChange={(e) => updateArrayItem(['funding', 'investors'], index, 'amount', e.target.value)}
-                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                     placeholder="$100K"
                   />
                 </div>
@@ -1173,10 +1173,10 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
             <Settings size={24} className="text-[#B74B28]" />
           </div>
           <div>
-            <h1 className="text-3xl md:text-4xl font-bold text-[#B74B28] transform rotate-1">
+            <h1 className="text-4xl md:text-5xl text-[#B74B28] transform rotate-1">
               Admin Panel
             </h1>
-            <p className="text-sm text-[#B74B28] opacity-75">DataVault Management</p>
+            <p className="text-base text-[#B74B28] opacity-75">DataVault Management</p>
           </div>
         </div>
 
@@ -1200,7 +1200,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                 }`}
               >
                 <tab.icon size={20} />
-                <span className="font-medium text-sm">{tab.name}</span>
+                <span className="text-lg">{tab.name}</span>
               </button>
             ))}
           </nav>
@@ -1221,7 +1221,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                       })()}
                     </div>
                   )}
-                  <h2 className="text-2xl md:text-3xl font-bold text-[#B74B28]">
+                  <h2 className="text-3xl md:text-4xl text-[#B74B28]">
                     {tabs.find((t) => t.id === activeTab)?.name}
                   </h2>
                 </div>

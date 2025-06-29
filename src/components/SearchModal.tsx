@@ -206,7 +206,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
             <div className="w-10 h-10 bg-[#FAB049] rounded-full border-3 border-black flex items-center justify-center">
               <Search size={20} className="text-[#B74B28]" />
             </div>
-            <h2 className="text-2xl font-bold text-[#B74B28]">Search Data Room</h2>
+            <h2 className="text-3xl text-[#B74B28]">Search Data Room</h2>
           </div>
           <button
             onClick={onClose}
@@ -225,7 +225,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
               placeholder="Search documents, sections, or data..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border-2 border-black rounded-[10px] focus:outline-none focus:border-[#fab049] text-lg"
+              className="w-full pl-10 pr-4 py-3 border-2 border-black rounded-[10px] focus:outline-none focus:border-[#fab049] text-xl"
               autoFocus
             />
           </div>
@@ -235,14 +235,14 @@ export const SearchModal: React.FC<SearchModalProps> = ({
         <div className="max-h-96 overflow-y-auto">
           {searchTerm && results.length === 0 && (
             <div className="p-6 text-center text-[#B74B28]">
-              <p>No results found for "{searchTerm}"</p>
-              <p className="text-sm text-gray-600 mt-2">Try searching for documents, team members, or financial data</p>
+              <p className="text-xl">No results found for "{searchTerm}"</p>
+              <p className="text-lg text-gray-600 mt-2">Try searching for documents, team members, or financial data</p>
             </div>
           )}
 
           {results.length > 0 && (
             <div className="p-4">
-              <p className="text-sm text-[#B74B28] mb-4 px-2">
+              <p className="text-lg text-[#B74B28] mb-4 px-2">
                 Found {results.length} result{results.length !== 1 ? 's' : ''}
               </p>
               <div className="space-y-2">
@@ -258,9 +258,9 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                         <IconComponent size={20} className="text-[#B74B28]" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="font-bold text-[#B74B28] truncate">{result.title}</h3>
-                        <p className="text-sm text-gray-600 truncate">{result.description}</p>
-                        <span className="text-xs text-[#B74B28] opacity-75">{result.category}</span>
+                        <h3 className="text-xl text-[#B74B28] truncate">{result.title}</h3>
+                        <p className="text-lg text-gray-600 truncate">{result.description}</p>
+                        <span className="text-base text-[#B74B28] opacity-75">{result.category}</span>
                       </div>
                     </button>
                   );
@@ -271,7 +271,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
 
           {!searchTerm && (
             <div className="p-6">
-              <h3 className="text-lg font-bold text-[#B74B28] mb-4">Quick Access</h3>
+              <h3 className="text-2xl text-[#B74B28] mb-4">Quick Access</h3>
               <div className="grid grid-cols-2 gap-3">
                 {Object.entries(sectionIcons).slice(0, 8).map(([section, IconComponent]) => (
                   <button
@@ -283,7 +283,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                     className="flex items-center gap-3 p-3 bg-white rounded-[8px] border-2 border-black hover:bg-[#FAB049] transition-colors"
                   >
                     <IconComponent size={16} className="text-[#B74B28]" />
-                    <span className="text-sm font-medium text-[#B74B28] capitalize">{section}</span>
+                    <span className="text-lg text-[#B74B28] capitalize">{section}</span>
                   </button>
                 ))}
               </div>

@@ -128,7 +128,7 @@ export const DocumentManager: React.FC<DocumentManagerProps> = ({
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h3 className="text-2xl font-bold text-[#B74B28]">Document Library</h3>
+        <h3 className="text-3xl text-[#B74B28]">Document Library</h3>
         {isAdmin && (
           <Button
             onClick={() => setShowAddModal(true)}
@@ -151,7 +151,7 @@ export const DocumentManager: React.FC<DocumentManagerProps> = ({
               // Edit Mode
               <div className="space-y-4">
                 <div className="flex items-center justify-between mb-4">
-                  <h4 className="text-lg font-bold text-[#B74B28]">Edit Document</h4>
+                  <h4 className="text-xl text-[#B74B28]">Edit Document</h4>
                   <div className="flex gap-2">
                     <button
                       onClick={handleSaveEdit}
@@ -170,47 +170,48 @@ export const DocumentManager: React.FC<DocumentManagerProps> = ({
                 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-bold text-[#B74B28] mb-2">Name</label>
+                    <label className="block text-lg text-[#B74B28] mb-2">Name</label>
                     <input
                       type="text"
                       value={editForm.name || ''}
                       onChange={(e) => setEditForm(prev => ({ ...prev, name: e.target.value }))}
-                      className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                      className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                     />
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-bold text-[#B74B28] mb-2">Type</label>
+                    <label className="block text-lg text-[#B74B28] mb-2">Type</label>
                     <select
                       value={editForm.type || ''}
                       onChange={(e) => setEditForm(prev => ({ ...prev, type: e.target.value }))}
-                      className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                      className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                     >
                       <option value="PDF">PDF</option>
                       <option value="DOC">Word</option>
                       <option value="XLS">Excel</option>
                       <option value="PPT">PowerPoint</option>
                       <option value="VIDEO">Video</option>
+                      
                       <option value="IMAGE">Image</option>
                     </select>
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-bold text-[#B74B28] mb-2">Size</label>
+                    <label className="block text-lg text-[#B74B28] mb-2">Size</label>
                     <input
                       type="text"
                       value={editForm.size || ''}
                       onChange={(e) => setEditForm(prev => ({ ...prev, size: e.target.value }))}
-                      className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                      className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                     />
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-bold text-[#B74B28] mb-2">Category</label>
+                    <label className="block text-lg text-[#B74B28] mb-2">Category</label>
                     <select
                       value={editForm.category || ''}
                       onChange={(e) => setEditForm(prev => ({ ...prev, category: e.target.value }))}
-                      className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                      className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                     >
                       {categories.map(cat => (
                         <option key={cat.id} value={cat.id}>{cat.name}</option>
@@ -219,11 +220,11 @@ export const DocumentManager: React.FC<DocumentManagerProps> = ({
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-bold text-[#B74B28] mb-2">Access Level</label>
+                    <label className="block text-lg text-[#B74B28] mb-2">Access Level</label>
                     <select
                       value={editForm.accessLevel || ''}
                       onChange={(e) => setEditForm(prev => ({ ...prev, accessLevel: e.target.value as any }))}
-                      className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                      className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                     >
                       {accessLevels.map(level => (
                         <option key={level.id} value={level.id}>{level.name}</option>
@@ -239,19 +240,19 @@ export const DocumentManager: React.FC<DocumentManagerProps> = ({
                       onChange={(e) => setEditForm(prev => ({ ...prev, pinned: e.target.checked }))}
                       className="w-4 h-4"
                     />
-                    <label htmlFor={`pinned-${doc.id}`} className="text-sm font-bold text-[#B74B28]">
+                    <label htmlFor={`pinned-${doc.id}`} className="text-lg text-[#B74B28]">
                       Pin to Quick Access
                     </label>
                   </div>
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-bold text-[#B74B28] mb-2">URL</label>
+                  <label className="block text-lg text-[#B74B28] mb-2">URL</label>
                   <input
                     type="url"
                     value={editForm.url || ''}
                     onChange={(e) => setEditForm(prev => ({ ...prev, url: e.target.value }))}
-                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] text-lg"
                   />
                 </div>
               </div>
@@ -265,15 +266,15 @@ export const DocumentManager: React.FC<DocumentManagerProps> = ({
                   
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <h4 className="font-bold text-lg text-[#B74B28]">{doc.name}</h4>
+                      <h4 className="text-xl text-[#B74B28]">{doc.name}</h4>
                       {doc.pinned && (
                         <Pin size={16} className="text-[#B74B28]" />
                       )}
                     </div>
-                    <div className="flex items-center gap-4 text-sm text-gray-600">
+                    <div className="flex items-center gap-4 text-base text-gray-600">
                       <span>{doc.type} • {doc.size}</span>
                       <span>Modified: {doc.lastModified}</span>
-                      <Badge className={`text-xs ${getAccessLevelColor(doc.accessLevel)}`}>
+                      <Badge className={`text-sm ${getAccessLevelColor(doc.accessLevel)}`}>
                         {doc.accessLevel}
                       </Badge>
                     </div>
@@ -328,13 +329,13 @@ export const DocumentManager: React.FC<DocumentManagerProps> = ({
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
           <div className="bg-[#FFF1D6] rounded-[20px] border-4 border-black shadow-[8px_8px_0px_#000000] w-full max-w-md">
             <div className="p-6 border-b-4 border-black">
-              <h3 className="text-2xl font-bold text-[#B74B28]">Add New Document</h3>
+              <h3 className="text-3xl text-[#B74B28]">Add New Document</h3>
             </div>
             
             <div className="p-6 space-y-4">
               {/* File Upload */}
               <div>
-                <label className="block text-sm font-bold text-[#B74B28] mb-2">
+                <label className="block text-lg text-[#B74B28] mb-2">
                   Upload File
                 </label>
                 <div className="relative">
@@ -350,7 +351,7 @@ export const DocumentManager: React.FC<DocumentManagerProps> = ({
                     className="flex items-center justify-center gap-2 p-4 border-2 border-dashed border-[#B74B28] rounded-[10px] cursor-pointer hover:bg-[#FAB049] transition-colors"
                   >
                     <Upload size={20} className="text-[#B74B28]" />
-                    <span className="text-[#B74B28] font-medium">Choose File</span>
+                    <span className="text-[#B74B28] text-lg">Choose File</span>
                   </label>
                 </div>
               </div>
@@ -358,27 +359,27 @@ export const DocumentManager: React.FC<DocumentManagerProps> = ({
               {/* OR Divider */}
               <div className="flex items-center gap-4">
                 <div className="flex-1 h-px bg-[#B74B28]"></div>
-                <span className="text-[#B74B28] font-bold">OR</span>
+                <span className="text-[#B74B28] text-lg">OR</span>
                 <div className="flex-1 h-px bg-[#B74B28]"></div>
               </div>
 
               {/* Manual Entry */}
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-bold text-[#B74B28] mb-2">
+                  <label className="block text-lg text-[#B74B28] mb-2">
                     Document Name
                   </label>
                   <input
                     type="text"
                     value={newDoc.name}
                     onChange={(e) => setNewDoc(prev => ({ ...prev, name: e.target.value }))}
-                    className="w-full p-3 border-2 border-black rounded-[10px] focus:outline-none focus:border-[#fab049]"
+                    className="w-full p-3 border-2 border-black rounded-[10px] focus:outline-none focus:border-[#fab049] text-lg"
                     placeholder="Enter document name"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-[#B74B28] mb-2">
+                  <label className="block text-lg text-[#B74B28] mb-2">
                     Document URL
                   </label>
                   <div className="relative">
@@ -387,7 +388,7 @@ export const DocumentManager: React.FC<DocumentManagerProps> = ({
                       type="url"
                       value={newDoc.url}
                       onChange={(e) => setNewDoc(prev => ({ ...prev, url: e.target.value }))}
-                      className="w-full pl-10 pr-4 p-3 border-2 border-black rounded-[10px] focus:outline-none focus:border-[#fab049]"
+                      className="w-full pl-10 pr-4 p-3 border-2 border-black rounded-[10px] focus:outline-none focus:border-[#fab049] text-lg"
                       placeholder="https://example.com/document.pdf"
                     />
                   </div>
@@ -395,13 +396,13 @@ export const DocumentManager: React.FC<DocumentManagerProps> = ({
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-bold text-[#B74B28] mb-2">
+                    <label className="block text-lg text-[#B74B28] mb-2">
                       Type
                     </label>
                     <select
                       value={newDoc.type}
                       onChange={(e) => setNewDoc(prev => ({ ...prev, type: e.target.value }))}
-                      className="w-full p-3 border-2 border-black rounded-[10px] focus:outline-none focus:border-[#fab049]"
+                      className="w-full p-3 border-2 border-black rounded-[10px] focus:outline-none focus:border-[#fab049] text-lg"
                     >
                       <option value="PDF">PDF</option>
                       <option value="DOC">Word</option>
@@ -413,14 +414,14 @@ export const DocumentManager: React.FC<DocumentManagerProps> = ({
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-[#B74B28] mb-2">
+                    <label className="block text-lg text-[#B74B28] mb-2">
                       Size
                     </label>
                     <input
                       type="text"
                       value={newDoc.size}
                       onChange={(e) => setNewDoc(prev => ({ ...prev, size: e.target.value }))}
-                      className="w-full p-3 border-2 border-black rounded-[10px] focus:outline-none focus:border-[#fab049]"
+                      className="w-full p-3 border-2 border-black rounded-[10px] focus:outline-none focus:border-[#fab049] text-lg"
                       placeholder="2.4 MB"
                     />
                   </div>
@@ -428,13 +429,13 @@ export const DocumentManager: React.FC<DocumentManagerProps> = ({
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-bold text-[#B74B28] mb-2">
+                    <label className="block text-lg text-[#B74B28] mb-2">
                       Category
                     </label>
                     <select
                       value={newDoc.category}
                       onChange={(e) => setNewDoc(prev => ({ ...prev, category: e.target.value }))}
-                      className="w-full p-3 border-2 border-black rounded-[10px] focus:outline-none focus:border-[#fab049]"
+                      className="w-full p-3 border-2 border-black rounded-[10px] focus:outline-none focus:border-[#fab049] text-lg"
                     >
                       {categories.map(cat => (
                         <option key={cat.id} value={cat.id}>{cat.name}</option>
@@ -443,13 +444,13 @@ export const DocumentManager: React.FC<DocumentManagerProps> = ({
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-[#B74B28] mb-2">
+                    <label className="block text-lg text-[#B74B28] mb-2">
                       Access Level
                     </label>
                     <select
                       value={newDoc.accessLevel}
                       onChange={(e) => setNewDoc(prev => ({ ...prev, accessLevel: e.target.value as any }))}
-                      className="w-full p-3 border-2 border-black rounded-[10px] focus:outline-none focus:border-[#fab049]"
+                      className="w-full p-3 border-2 border-black rounded-[10px] focus:outline-none focus:border-[#fab049] text-lg"
                     >
                       {accessLevels.map(level => (
                         <option key={level.id} value={level.id}>{level.name}</option>
@@ -466,7 +467,7 @@ export const DocumentManager: React.FC<DocumentManagerProps> = ({
                     onChange={(e) => setNewDoc(prev => ({ ...prev, pinned: e.target.checked }))}
                     className="w-4 h-4"
                   />
-                  <label htmlFor="pinned-new" className="text-sm font-bold text-[#B74B28]">
+                  <label htmlFor="pinned-new" className="text-lg text-[#B74B28]">
                     Pin to Quick Access
                   </label>
                 </div>
