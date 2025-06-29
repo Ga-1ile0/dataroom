@@ -2,485 +2,532 @@ import { CompanyData } from '../types';
 
 export const mockCompanyData: CompanyData = {
   overview: {
-    name: "Ferfie",
-    description: "Family Finance for the Onchain Generation",
+    name: "DataVault",
+    description: "Secure, Beautiful Data Rooms for Modern Startups",
     founded: "2024",
     location: "San Francisco, CA",
-    stage: "Pre-Seed",
-    industry: "FinTech/Crypto",
-    arr: "$0 (Pre-Revenue)",
-    customers: "Beta Users: 150 families",
-    teamSize: "4",
-    growthRate: "N/A (Pre-Launch)",
-    mission: "Ferfie is a crypto-powered family finance platform that helps parents teach kids aged 11–17 real-world money skills — starting with chore-based allowances and expanding into permissioned crypto spending, saving, and earning. Built on Base for speed and low fees, Ferfie makes blockchain practical, safe, and educational for families.",
-    vision: "To become the leading platform for onchain family finance education, onboarding entire households to crypto",
-    values: "Financial Education, Family Safety, Crypto Innovation, Transparency",
-    goals: "Launch MVP Q2 2025, reach 10K families by end of 2025, expand to European markets"
+    stage: "Seed",
+    industry: "SaaS/FinTech",
+    arr: "$480K ARR",
+    customers: "127 startups",
+    teamSize: "8",
+    growthRate: "45% MoM",
+    mission: "DataVault revolutionizes how startups share sensitive information with investors. Our platform combines bank-grade security with stunning design, making due diligence faster, more transparent, and delightful for both founders and investors.",
+    vision: "To become the standard platform for startup fundraising and investor relations, powering every funding round globally",
+    values: "Security First, Design Excellence, Transparency, Founder Success",
+    goals: "Reach $2M ARR by Q4 2025, expand to European markets, launch AI-powered due diligence tools"
   },
   financials: {
-    annualRevenue: "$0 (Pre-Revenue)",
-    monthlyBurn: "$25K",
-    runway: "12 months",
-    grossMargin: "N/A",
-    revenue: 0,
-    cogs: 0,
-    grossProfit: 0,
-    operatingExpenses: 300000,
-    netIncome: -300000,
-    operatingCashFlow: -300000,
-    investingCashFlow: -50000,
-    financingCashFlow: 500000,
-    netCashFlow: 150000,
-    cashBalance: 300000
+    annualRevenue: "$480K ARR",
+    monthlyBurn: "$45K",
+    runway: "18 months",
+    grossMargin: "92%",
+    revenue: 480000,
+    cogs: 38400,
+    grossProfit: 441600,
+    operatingExpenses: 540000,
+    netIncome: -98400,
+    operatingCashFlow: -98400,
+    investingCashFlow: -75000,
+    financingCashFlow: 1200000,
+    netCashFlow: 1026600,
+    cashBalance: 810000
   },
   team: {
     leadership: [
-      { name: "Alex Chen", role: "CEO & Co-Founder", background: "Ex-Coinbase, Stanford CS" },
-      { name: "Sarah Kim", role: "CTO & Co-Founder", background: "Ex-Meta, MIT Blockchain" },
-      { name: "Marcus Johnson", role: "Head of Product", background: "Ex-Stripe, Product Strategy" },
-      { name: "Emily Rodriguez", role: "Head of Growth", background: "Ex-Robinhood, Growth Marketing" }
+      { name: "Alex Rivera", role: "CEO & Co-Founder", background: "Ex-DocSend, Stanford MBA, 3x founder" },
+      { name: "Maya Chen", role: "CTO & Co-Founder", background: "Ex-Stripe, MIT CS, Security Expert" },
+      { name: "Jordan Kim", role: "Head of Product", background: "Ex-Notion, Design Systems Lead" },
+      { name: "Sam Rodriguez", role: "Head of Growth", background: "Ex-Airtable, Growth Marketing" }
     ],
     advisors: [
-      { name: "Brian Armstrong", background: "CEO of Coinbase, Crypto Industry Expert" },
-      { name: "Jesse Pollak", background: "Creator of Base, Onchain Advocate" },
-      { name: "Linda Xie", background: "Co-founder Scalar Capital, DeFi Expert" },
-      { name: "Balaji Srinivasan", background: "Former CTO Coinbase, Crypto Thought Leader" }
+      { name: "Russ Heddleston", background: "CEO of DocSend, Data Room Pioneer" },
+      { name: "Melanie Perkins", background: "CEO of Canva, Design & UX Expert" },
+      { name: "Patrick Collison", background: "CEO of Stripe, Payments & Security" },
+      { name: "Naval Ravikant", background: "AngelList Founder, Startup Ecosystem" }
     ],
-    totalEmployees: 4,
-    engineering: 2,
-    salesMarketing: 1,
-    operations: 1
+    totalEmployees: 8,
+    engineering: 4,
+    salesMarketing: 2,
+    operations: 2
   },
   market: {
-    tam: "$30B+ Global Allowance Market",
-    sam: "$7.5B Crypto-Native Families",
-    som: "$150M Addressable in Year 1",
+    tam: "$12B+ Global Due Diligence Market",
+    sam: "$3.2B Startup Data Room Market",
+    som: "$180M Addressable in Year 1",
     competitors: [
-      { name: "Greenlight", type: "Traditional", description: "Banking for kids, no crypto" },
-      { name: "Stockpile", type: "Investment", description: "Stock investing for kids" },
-      { name: "GoHenry", type: "Traditional", description: "Prepaid cards for children" }
+      { name: "DocSend", type: "Direct", description: "Legacy data room, limited design flexibility" },
+      { name: "Carta", type: "Indirect", description: "Cap table management with basic data rooms" },
+      { name: "Foundersuite", type: "Indirect", description: "CRM with simple document sharing" }
     ],
     trends: [
-      "400M+ crypto holders globally",
-      "125M likely parents with children under 18",
-      "27% of teens feel confident about personal finance",
-      "Growing demand for financial literacy education"
+      "Remote due diligence becoming standard",
+      "Investors demanding faster, more transparent processes",
+      "Security and compliance requirements increasing",
+      "Design and UX becoming competitive differentiators"
     ]
   },
   product: {
     features: [
-      "Parent Dashboard with chore assignment",
-      "Child profiles with stablecoin earnings",
-      "Permission system for spending controls",
-      "In-app NFT and token marketplace",
-      "Gift card integration (Uber Eats, gaming)",
-      "Onchain transaction transparency",
-      "Wallet-connected authentication",
-      "QR code secure access for kids"
+      "Drag-and-drop data room builder",
+      "Real-time investor analytics",
+      "Granular permission controls",
+      "Beautiful, branded experiences",
+      "Advanced security & encryption",
+      "Mobile-optimized viewing",
+      "AI-powered document insights",
+      "Investor CRM integration"
     ],
     techStack: [
-      "Next.js 14",
+      "React 18",
       "TypeScript",
+      "Next.js 14",
+      "Supabase",
       "TailwindCSS",
-      "PostgreSQL",
-      "Prisma",
-      "Base Blockchain",
-      "Ethers.js",
-      "Wagmi",
-      "Bitrefill API",
-      "Coingecko API"
+      "Framer Motion",
+      "AWS S3",
+      "Stripe",
+      "PostHog",
+      "Vercel"
     ],
     roadmap: [
       {
         quarter: "Q1 2025",
-        features: ["MVP Launch", "Basic Chore System", "USDC Integration"],
+        features: ["AI Document Analysis", "Advanced Analytics", "Mobile App"],
         status: "In Progress"
       },
       {
         quarter: "Q2 2025",
-        features: ["NFT Marketplace", "Gift Card Integration", "Mobile App"],
+        features: ["White-label Solutions", "API Platform", "Slack Integration"],
         status: "Planned"
       },
       {
         quarter: "Q3 2025",
-        features: ["Multi-Currency Support", "Advanced Analytics", "Family Sharing"],
+        features: ["Virtual Data Rooms", "Video Pitching", "Multi-language Support"],
         status: "Planned"
       },
       {
         quarter: "Q4 2025",
-        features: ["DeFi Education", "Savings Goals", "International Expansion"],
+        features: ["Blockchain Verification", "Smart Contracts", "Global Expansion"],
         status: "Planned"
       }
     ]
   },
   legal: {
     entityType: "Delaware C-Corporation",
-    incorporationDate: "March 2024",
-    ein: "88-9876543",
-    address: "548 Market St, San Francisco, CA 94104",
+    incorporationDate: "January 2024",
+    ein: "88-1234567",
+    address: "2261 Market St, San Francisco, CA 94114",
     intellectualProperty: [
-      { type: "Trademark", name: "Ferfie", status: "Filed" },
-      { type: "Patent", name: "Family Crypto Allowance System", status: "Pending" }
+      { type: "Trademark", name: "DataVault", status: "Approved" },
+      { type: "Patent", name: "Secure Document Sharing System", status: "Filed" },
+      { type: "Copyright", name: "DataVault Platform Software", status: "Approved" }
     ],
     compliance: [
-      "COPPA Compliant",
-      "GDPR Ready",
-      "SOC 2 Type I (Planned)",
-      "Financial Services Regulations"
+      "SOC 2 Type II Certified",
+      "GDPR Compliant",
+      "CCPA Compliant",
+      "ISO 27001 Certified",
+      "HIPAA Ready"
     ]
   },
   funding: {
-    totalRaised: "$500K",
-    currentRound: "Pre-Seed",
-    targetAmount: "$2M",
-    useOfFunds: "Product Development (50%), Team Expansion (30%), Marketing (20%)",
+    totalRaised: "$1.2M",
+    currentRound: "Seed",
+    targetAmount: "$3.5M",
+    useOfFunds: "Product Development (40%), Sales & Marketing (35%), Team Expansion (25%)",
     investors: [
-      { name: "Coinbase Ventures", type: "Strategic", amount: "$250K" },
-      { name: "Base Ecosystem Fund", type: "Strategic", amount: "$150K" },
-      { name: "Angel Investors", type: "Angel", amount: "$100K" }
+      { name: "Bessemer Venture Partners", type: "VC", amount: "$600K" },
+      { name: "First Round Capital", type: "VC", amount: "$400K" },
+      { name: "Angel Investors", type: "Angel", amount: "$200K" }
     ],
-    valuation: "$8M Pre-Money"
+    valuation: "$15M Pre-Money"
   },
   metrics: [
     { 
-      label: 'Monthly Active Users', 
-      value: '1,247', 
-      change: '+34%', 
-      trend: 'up',
-      category: 'engagement',
-      description: 'Families actively using the platform monthly',
-      chartData: [850, 920, 1050, 1180, 1247],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Transaction Volume', 
-      value: '$47,230', 
-      change: '+67%', 
-      trend: 'up',
-      category: 'revenue',
-      description: 'Total USDC processed through platform',
-      chartData: [18500, 22100, 28900, 35600, 47230],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Average Transaction', 
-      value: '$16.58', 
-      change: '+12%', 
-      trend: 'up',
-      category: 'financial',
-      description: 'Mean transaction size per family',
-      chartData: [14.20, 14.80, 15.30, 15.90, 16.58],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'User Retention (30d)', 
-      value: '78%', 
-      change: '+8%', 
-      trend: 'up',
-      category: 'engagement',
-      description: '30-day user retention rate',
-      chartData: [65, 68, 72, 75, 78],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Chores Completed', 
-      value: '12,847', 
+      label: 'Monthly Recurring Revenue', 
+      value: '$40K', 
       change: '+45%', 
       trend: 'up',
-      category: 'engagement',
-      description: 'Total chores completed by children',
-      chartData: [6200, 7800, 9100, 10900, 12847],
+      category: 'revenue',
+      description: 'Subscription revenue from active customers',
+      chartData: [18000, 22500, 28000, 34500, 40000],
       period: 'Last 5 months'
     },
     { 
-      label: 'Parent Satisfaction', 
-      value: '4.7/5', 
-      change: '+0.3', 
+      label: 'Active Data Rooms', 
+      value: '347', 
+      change: '+67%', 
       trend: 'up',
       category: 'engagement',
-      description: 'Average parent rating of platform',
-      chartData: [4.2, 4.3, 4.4, 4.6, 4.7],
+      description: 'Data rooms created and actively used',
+      chartData: [145, 180, 220, 280, 347],
       period: 'Last 5 months'
     },
     { 
-      label: 'Cost Per Acquisition', 
-      value: '$23.50', 
-      change: '-18%', 
+      label: 'Customer Acquisition Cost', 
+      value: '$180', 
+      change: '-23%', 
       trend: 'up',
       category: 'financial',
-      description: 'Cost to acquire new family',
-      chartData: [32.10, 28.90, 26.40, 24.80, 23.50],
+      description: 'Cost to acquire new paying customer',
+      chartData: [280, 250, 220, 200, 180],
       period: 'Last 5 months'
     },
     { 
-      label: 'Wallet Connections', 
-      value: '892', 
-      change: '+89%', 
-      trend: 'up',
-      category: 'growth',
-      description: 'Families with connected crypto wallets',
-      chartData: [245, 380, 520, 680, 892],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Daily Active Families', 
-      value: '423', 
-      change: '+28%', 
-      trend: 'up',
-      category: 'engagement',
-      description: 'Families using platform daily',
-      chartData: [280, 310, 350, 390, 423],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Revenue Per User', 
-      value: '$37.89', 
-      change: '+23%', 
+      label: 'Net Revenue Retention', 
+      value: '134%', 
+      change: '+12%', 
       trend: 'up',
       category: 'revenue',
-      description: 'Average revenue generated per family',
-      chartData: [24.50, 27.80, 31.20, 34.60, 37.89],
+      description: 'Revenue expansion from existing customers',
+      chartData: [115, 120, 125, 130, 134],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Documents Shared', 
+      value: '28,947', 
+      change: '+89%', 
+      trend: 'up',
+      category: 'engagement',
+      description: 'Total documents uploaded to platform',
+      chartData: [12400, 15800, 19200, 24100, 28947],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Investor Engagement', 
+      value: '87%', 
+      change: '+18%', 
+      trend: 'up',
+      category: 'engagement',
+      description: 'Investors actively viewing shared documents',
+      chartData: [68, 72, 78, 83, 87],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Average Deal Size', 
+      value: '$3,780', 
+      change: '+34%', 
+      trend: 'up',
+      category: 'revenue',
+      description: 'Average annual contract value',
+      chartData: [2400, 2680, 3020, 3380, 3780],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Platform Uptime', 
+      value: '99.97%', 
+      change: '+0.02%', 
+      trend: 'up',
+      category: 'financial',
+      description: 'System availability and reliability',
+      chartData: [99.92, 99.94, 99.95, 99.96, 99.97],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Time to First Share', 
+      value: '3.2 min', 
+      change: '-45%', 
+      trend: 'up',
+      category: 'engagement',
+      description: 'Time from signup to first document share',
+      chartData: [6.8, 5.9, 4.8, 3.9, 3.2],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Customer Satisfaction', 
+      value: '4.8/5', 
+      change: '+0.4', 
+      trend: 'up',
+      category: 'engagement',
+      description: 'Average customer rating and feedback',
+      chartData: [4.2, 4.3, 4.5, 4.7, 4.8],
       period: 'Last 5 months'
     },
     { 
       label: 'Churn Rate', 
-      value: '3.2%', 
-      change: '-1.8%', 
+      value: '2.1%', 
+      change: '-1.9%', 
       trend: 'up',
       category: 'financial',
-      description: 'Monthly user churn rate',
-      chartData: [5.8, 5.1, 4.3, 3.7, 3.2],
+      description: 'Monthly customer churn percentage',
+      chartData: [5.2, 4.1, 3.3, 2.7, 2.1],
       period: 'Last 5 months'
     },
     { 
-      label: 'Session Duration', 
-      value: '8.4 min', 
-      change: '+15%', 
-      trend: 'up',
-      category: 'engagement',
-      description: 'Average session length per user',
-      chartData: [6.2, 6.8, 7.3, 7.9, 8.4],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Feature Adoption', 
-      value: '67%', 
-      change: '+22%', 
-      trend: 'up',
-      category: 'engagement',
-      description: 'Users actively using core features',
-      chartData: [42, 48, 55, 61, 67],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Support Tickets', 
-      value: '12', 
-      change: '-35%', 
-      trend: 'up',
-      category: 'financial',
-      description: 'Monthly support requests per 100 users',
-      chartData: [28, 22, 18, 15, 12],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Referral Rate', 
-      value: '24%', 
-      change: '+18%', 
-      trend: 'up',
-      category: 'growth',
-      description: 'Users who refer new families',
-      chartData: [15, 17, 19, 22, 24],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Mobile App Usage', 
-      value: '73%', 
-      change: '+31%', 
-      trend: 'up',
-      category: 'engagement',
-      description: 'Sessions from mobile devices',
-      chartData: [45, 52, 59, 66, 73],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Crypto Education', 
-      value: '89%', 
-      change: '+12%', 
-      trend: 'up',
-      category: 'engagement',
-      description: 'Families completing education modules',
-      chartData: [72, 76, 81, 85, 89],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Savings Goals Met', 
-      value: '56%', 
-      change: '+19%', 
-      trend: 'up',
-      category: 'engagement',
-      description: 'Children reaching their savings targets',
-      chartData: [38, 42, 47, 52, 56],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'API Response Time', 
-      value: '127ms', 
-      change: '-23%', 
-      trend: 'up',
-      category: 'financial',
-      description: 'Average API response latency',
-      chartData: [185, 165, 148, 135, 127],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Network Fees Saved', 
-      value: '$2,847', 
+      label: 'API Requests', 
+      value: '1.2M', 
       change: '+156%', 
       trend: 'up',
-      category: 'financial',
-      description: 'Gas fees saved using Base vs Ethereum',
-      chartData: [890, 1240, 1680, 2180, 2847],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Parent Engagement', 
-      value: '84%', 
-      change: '+16%', 
-      trend: 'up',
       category: 'engagement',
-      description: 'Parents actively managing child accounts',
-      chartData: [68, 72, 76, 80, 84],
+      description: 'Monthly API calls from integrations',
+      chartData: [380000, 520000, 680000, 920000, 1200000],
       period: 'Last 5 months'
     },
     { 
-      label: 'Gift Card Redemptions', 
-      value: '1,234', 
-      change: '+78%', 
-      trend: 'up',
-      category: 'revenue',
-      description: 'Gift cards purchased through platform',
-      chartData: [520, 680, 850, 1040, 1234],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Security Incidents', 
+      label: 'Security Scans', 
       value: '0', 
       change: '0%', 
       trend: 'stable',
       category: 'financial',
-      description: 'Security breaches or fund losses',
+      description: 'Security vulnerabilities detected',
       chartData: [0, 0, 0, 0, 0],
       period: 'Last 5 months'
     },
     { 
-      label: 'Onboarding Time', 
-      value: '4.2 min', 
-      change: '-28%', 
+      label: 'Feature Adoption', 
+      value: '73%', 
+      change: '+28%', 
       trend: 'up',
       category: 'engagement',
-      description: 'Time to complete family setup',
-      chartData: [6.8, 6.1, 5.4, 4.8, 4.2],
+      description: 'Users utilizing advanced features',
+      chartData: [48, 54, 61, 67, 73],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Mobile Usage', 
+      value: '42%', 
+      change: '+67%', 
+      trend: 'up',
+      category: 'engagement',
+      description: 'Sessions from mobile devices',
+      chartData: [18, 23, 29, 36, 42],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Data Transfer', 
+      value: '847 GB', 
+      change: '+123%', 
+      trend: 'up',
+      category: 'engagement',
+      description: 'Monthly data transferred through platform',
+      chartData: [280, 380, 520, 680, 847],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Conversion Rate', 
+      value: '18.4%', 
+      change: '+23%', 
+      trend: 'up',
+      category: 'revenue',
+      description: 'Trial to paid conversion percentage',
+      chartData: [12.8, 14.2, 15.7, 17.1, 18.4],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Support Response', 
+      value: '12 min', 
+      change: '-38%', 
+      trend: 'up',
+      category: 'engagement',
+      description: 'Average first response time',
+      chartData: [28, 23, 18, 15, 12],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Enterprise Deals', 
+      value: '23', 
+      change: '+92%', 
+      trend: 'up',
+      category: 'revenue',
+      description: 'Enterprise contracts signed',
+      chartData: [8, 11, 14, 18, 23],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Referral Revenue', 
+      value: '$12K', 
+      change: '+145%', 
+      trend: 'up',
+      category: 'revenue',
+      description: 'Revenue from customer referrals',
+      chartData: [3200, 4800, 6800, 9200, 12000],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Page Load Time', 
+      value: '0.8s', 
+      change: '-35%', 
+      trend: 'up',
+      category: 'financial',
+      description: 'Average page load performance',
+      chartData: [1.4, 1.2, 1.0, 0.9, 0.8],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Integration Usage', 
+      value: '67%', 
+      change: '+89%', 
+      trend: 'up',
+      category: 'engagement',
+      description: 'Customers using third-party integrations',
+      chartData: [28, 35, 45, 56, 67],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Fundraising Success', 
+      value: '89%', 
+      change: '+12%', 
+      trend: 'up',
+      category: 'engagement',
+      description: 'Customers who successfully raised funding',
+      chartData: [76, 79, 83, 86, 89],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Team Collaboration', 
+      value: '4.2', 
+      change: '+31%', 
+      trend: 'up',
+      category: 'engagement',
+      description: 'Average team members per data room',
+      chartData: [2.8, 3.1, 3.5, 3.9, 4.2],
       period: 'Last 5 months'
     }
   ],
   documents: [
     {
       id: '1',
-      name: 'Ferfie Pitch Deck 2024.pdf',
+      name: 'DataVault Pitch Deck 2024.pdf',
       type: 'PDF',
-      size: '3.2 MB',
+      size: '4.2 MB',
       lastModified: '2024-12-15',
       category: 'company',
       accessLevel: 'public',
       status: 'active',
-      url: '',
+      url: 'https://example.com/datavault-pitch-deck.pdf',
       pinned: true
     },
     {
       id: '2',
-      name: 'Financial Projections.xlsx',
+      name: 'Financial Model & Projections.xlsx',
       type: 'Excel',
-      size: '1.8 MB',
-      lastModified: '2024-12-10',
+      size: '2.1 MB',
+      lastModified: '2024-12-12',
       category: 'financial',
       accessLevel: 'confidential',
       status: 'active',
-      url: '',
+      url: 'https://example.com/financial-model.xlsx',
       pinned: false
     },
     {
       id: '3',
-      name: 'Product Demo Video.mp4',
+      name: 'Product Demo & Walkthrough.mp4',
       type: 'Video',
-      size: '25.6 MB',
-      lastModified: '2024-12-08',
+      size: '45.8 MB',
+      lastModified: '2024-12-10',
       category: 'product',
       accessLevel: 'public',
       status: 'active',
-      url: '',
+      url: 'https://example.com/product-demo.mp4',
       pinned: true
     },
     {
       id: '4',
-      name: 'Market Research Report.pdf',
+      name: 'Market Analysis & Competitive Landscape.pdf',
       type: 'PDF',
-      size: '4.1 MB',
-      lastModified: '2024-12-05',
+      size: '6.3 MB',
+      lastModified: '2024-12-08',
       category: 'market',
       accessLevel: 'public',
       status: 'active',
-      url: '',
+      url: 'https://example.com/market-analysis.pdf',
       pinned: false
     },
     {
       id: '5',
-      name: 'Technical Architecture.pdf',
+      name: 'Technical Architecture & Security.pdf',
       type: 'PDF',
-      size: '2.3 MB',
-      lastModified: '2024-12-03',
+      size: '3.7 MB',
+      lastModified: '2024-12-05',
       category: 'product',
       accessLevel: 'restricted',
       status: 'active',
-      url: '',
+      url: 'https://example.com/technical-architecture.pdf',
+      pinned: false
+    },
+    {
+      id: '6',
+      name: 'Customer Case Studies.pdf',
+      type: 'PDF',
+      size: '5.1 MB',
+      lastModified: '2024-12-03',
+      category: 'company',
+      accessLevel: 'public',
+      status: 'active',
+      url: 'https://example.com/case-studies.pdf',
+      pinned: true
+    },
+    {
+      id: '7',
+      name: 'Legal Documents & Compliance.pdf',
+      type: 'PDF',
+      size: '8.9 MB',
+      lastModified: '2024-12-01',
+      category: 'legal',
+      accessLevel: 'confidential',
+      status: 'active',
+      url: 'https://example.com/legal-docs.pdf',
+      pinned: false
+    },
+    {
+      id: '8',
+      name: 'Team Bios & Advisory Board.pdf',
+      type: 'PDF',
+      size: '2.8 MB',
+      lastModified: '2024-11-28',
+      category: 'company',
+      accessLevel: 'public',
+      status: 'active',
+      url: 'https://example.com/team-bios.pdf',
       pinned: false
     }
   ],
   users: [
     {
       id: '1',
-      name: 'Sarah Johnson',
-      email: 'sarah@a16z.com',
+      name: 'Sarah Chen',
+      email: 'sarah@bessemer.com',
       role: 'Lead Investor',
       lastAccess: '2024-12-15',
-      documentsAccessed: 8,
-      status: 'active'
-    },
-    {
-      id: '2',
-      name: 'Michael Chen',
-      email: 'mike@coinbase.ventures',
-      role: 'Strategic Investor',
-      lastAccess: '2024-12-14',
       documentsAccessed: 12,
       status: 'active'
     },
     {
+      id: '2',
+      name: 'Michael Torres',
+      email: 'mike@firstround.com',
+      role: 'Partner',
+      lastAccess: '2024-12-14',
+      documentsAccessed: 8,
+      status: 'active'
+    },
+    {
       id: '3',
-      name: 'Emily Davis',
-      email: 'emily@base.org',
-      role: 'Ecosystem Partner',
+      name: 'Emily Rodriguez',
+      email: 'emily@angelinvestor.com',
+      role: 'Angel Investor',
       lastAccess: '2024-12-13',
       documentsAccessed: 6,
       status: 'active'
     },
     {
       id: '4',
-      name: 'David Park',
-      email: 'david@legal.firm',
-      role: 'Legal Advisor',
+      name: 'David Kim',
+      email: 'david@legalfirm.com',
+      role: 'Legal Counsel',
       lastAccess: '2024-12-10',
       documentsAccessed: 15,
       status: 'pending'
+    },
+    {
+      id: '5',
+      name: 'Lisa Wang',
+      email: 'lisa@techvc.com',
+      role: 'Investment Associate',
+      lastAccess: '2024-12-09',
+      documentsAccessed: 4,
+      status: 'active'
     }
   ]
 };
