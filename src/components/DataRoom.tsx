@@ -140,35 +140,35 @@ export const DataRoom: React.FC<DataRoomProps> = ({
             <Sparkles size={32} className="text-[#B74B28]" />
           </div>
           <div>
-            <h2 className="text-4xl text-[#B74B28]">{companyData.overview.name}</h2>
-            <p className="text-xl text-[#73430C]">{companyData.overview.description}</p>
+            <h2 className="text-3xl font-bold text-[#B74B28]">{companyData.overview.name}</h2>
+            <p className="text-lg text-[#73430C]">{companyData.overview.description}</p>
           </div>
         </div>
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <h3 className="text-2xl text-[#B74B28] mb-3">Company Info</h3>
+            <h3 className="text-xl font-bold text-[#B74B28] mb-3">Company Info</h3>
             <div className="space-y-2 text-[#73430C]">
-              <p className="text-lg"><span className="text-[#B74B28]">Founded:</span> {companyData.overview.founded}</p>
-              <p className="text-lg"><span className="text-[#B74B28]">Location:</span> {companyData.overview.location}</p>
-              <p className="text-lg"><span className="text-[#B74B28]">Stage:</span> {companyData.overview.stage}</p>
-              <p className="text-lg"><span className="text-[#B74B28]">Industry:</span> {companyData.overview.industry}</p>
+              <p><strong>Founded:</strong> {companyData.overview.founded}</p>
+              <p><strong>Location:</strong> {companyData.overview.location}</p>
+              <p><strong>Stage:</strong> {companyData.overview.stage}</p>
+              <p><strong>Industry:</strong> {companyData.overview.industry}</p>
             </div>
           </div>
           <div>
-            <h3 className="text-2xl text-[#B74B28] mb-3">Key Metrics</h3>
+            <h3 className="text-xl font-bold text-[#B74B28] mb-3">Key Metrics</h3>
             <div className="space-y-2 text-[#73430C]">
-              <p className="text-lg"><span className="text-[#B74B28]">ARR:</span> {companyData.overview.arr}</p>
-              <p className="text-lg"><span className="text-[#B74B28]">Customers:</span> {companyData.overview.customers}</p>
-              <p className="text-lg"><span className="text-[#B74B28]">Team Size:</span> {companyData.overview.teamSize}</p>
-              <p className="text-lg"><span className="text-[#B74B28]">Growth Rate:</span> {companyData.overview.growthRate}</p>
+              <p><strong>ARR:</strong> {companyData.overview.arr}</p>
+              <p><strong>Customers:</strong> {companyData.overview.customers}</p>
+              <p><strong>Team Size:</strong> {companyData.overview.teamSize}</p>
+              <p><strong>Growth Rate:</strong> {companyData.overview.growthRate}</p>
             </div>
           </div>
         </div>
       </div>
 
       <div className="bg-[#FFF1D6] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 transform -rotate-1">
-        <h3 className="text-3xl text-[#B74B28] mb-4">Mission Statement</h3>
-        <p className="text-xl text-[#73430C] leading-relaxed">{companyData.overview.mission}</p>
+        <h3 className="text-2xl font-bold text-[#B74B28] mb-4">Mission Statement</h3>
+        <p className="text-lg text-[#73430C] leading-relaxed">{companyData.overview.mission}</p>
       </div>
 
       <div className="grid md:grid-cols-3 gap-6">
@@ -181,8 +181,8 @@ export const DataRoom: React.FC<DataRoomProps> = ({
             key={index}
             className={`${item.color} rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 text-white transform ${index % 2 === 0 ? "rotate-1" : "-rotate-1"}`}
           >
-            <h4 className="text-2xl mb-3">{item.title}</h4>
-            <p className="text-base leading-relaxed">{item.content}</p>
+            <h4 className="text-xl font-bold mb-3">{item.title}</h4>
+            <p className="text-sm leading-relaxed">{item.content}</p>
           </div>
         ))}
       </div>
@@ -192,7 +192,7 @@ export const DataRoom: React.FC<DataRoomProps> = ({
   const renderFinancials = () => (
     <div className="space-y-8">
       <div className="bg-[#FFF1D6] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 transform rotate-1">
-        <h2 className="text-3xl text-[#B74B28] mb-6">Financial Overview</h2>
+        <h2 className="text-2xl font-bold text-[#B74B28] mb-6">Financial Overview</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             { label: "Annual Revenue", value: companyData.financials.annualRevenue, growth: "+180%", color: "bg-[#7583FA]" },
@@ -204,9 +204,9 @@ export const DataRoom: React.FC<DataRoomProps> = ({
               key={index}
               className={`${metric.color} rounded-[10px] border-3 border-black shadow-[4px_4px_0px_#000000] p-4 text-white transform ${index % 2 === 0 ? "rotate-1" : "-rotate-1"}`}
             >
-              <p className="text-base opacity-90">{metric.label}</p>
-              <p className="text-3xl">{metric.value}</p>
-              <p className="text-base">{metric.growth}</p>
+              <p className="text-sm opacity-90">{metric.label}</p>
+              <p className="text-2xl font-bold">{metric.value}</p>
+              <p className="text-sm">{metric.growth}</p>
             </div>
           ))}
         </div>
@@ -214,53 +214,53 @@ export const DataRoom: React.FC<DataRoomProps> = ({
 
       <div className="grid md:grid-cols-2 gap-6">
         <div className="bg-[#FFF1D6] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 transform rotate-1">
-          <h3 className="text-2xl text-[#B74B28] mb-4">P&L Summary (Last 12 Months)</h3>
+          <h3 className="text-xl font-bold text-[#B74B28] mb-4">P&L Summary (Last 12 Months)</h3>
           <div className="space-y-3 text-[#73430C]">
             <div className="flex justify-between">
-              <span className="text-lg">Revenue</span>
-              <span className="text-lg text-[#B74B28]">${companyData.financials.revenue.toLocaleString()}</span>
+              <span>Revenue</span>
+              <span className="font-bold">${companyData.financials.revenue.toLocaleString()}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-lg">COGS</span>
-              <span className="text-lg text-[#B74B28]">${companyData.financials.cogs.toLocaleString()}</span>
+              <span>COGS</span>
+              <span className="font-bold">${companyData.financials.cogs.toLocaleString()}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-lg">Gross Profit</span>
-              <span className="text-lg text-green-600">${companyData.financials.grossProfit.toLocaleString()}</span>
+              <span>Gross Profit</span>
+              <span className="font-bold text-green-600">${companyData.financials.grossProfit.toLocaleString()}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-lg">Operating Expenses</span>
-              <span className="text-lg text-[#B74B28]">${companyData.financials.operatingExpenses.toLocaleString()}</span>
+              <span>Operating Expenses</span>
+              <span className="font-bold">${companyData.financials.operatingExpenses.toLocaleString()}</span>
             </div>
             <div className="flex justify-between border-t-2 border-[#B74B28] pt-2">
-              <span className="text-lg text-[#B74B28]">Net Income</span>
-              <span className="text-lg text-green-600">${companyData.financials.netIncome.toLocaleString()}</span>
+              <span className="font-bold">Net Income</span>
+              <span className="font-bold text-green-600">${companyData.financials.netIncome.toLocaleString()}</span>
             </div>
           </div>
         </div>
 
         <div className="bg-[#FFF1D6] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 transform -rotate-1">
-          <h3 className="text-2xl text-[#B74B28] mb-4">Cash Flow</h3>
+          <h3 className="text-xl font-bold text-[#B74B28] mb-4">Cash Flow</h3>
           <div className="space-y-3 text-[#73430C]">
             <div className="flex justify-between">
-              <span className="text-lg">Operating Cash Flow</span>
-              <span className="text-lg text-green-600">${companyData.financials.operatingCashFlow.toLocaleString()}</span>
+              <span>Operating Cash Flow</span>
+              <span className="font-bold text-green-600">${companyData.financials.operatingCashFlow.toLocaleString()}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-lg">Investing Cash Flow</span>
-              <span className="text-lg text-red-600">${companyData.financials.investingCashFlow.toLocaleString()}</span>
+              <span>Investing Cash Flow</span>
+              <span className="font-bold text-red-600">${companyData.financials.investingCashFlow.toLocaleString()}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-lg">Financing Cash Flow</span>
-              <span className="text-lg text-green-600">${companyData.financials.financingCashFlow.toLocaleString()}</span>
+              <span>Financing Cash Flow</span>
+              <span className="font-bold text-green-600">${companyData.financials.financingCashFlow.toLocaleString()}</span>
             </div>
             <div className="flex justify-between border-t-2 border-[#B74B28] pt-2">
-              <span className="text-lg text-[#B74B28]">Net Cash Flow</span>
-              <span className="text-lg text-green-600">${companyData.financials.netCashFlow.toLocaleString()}</span>
+              <span className="font-bold">Net Cash Flow</span>
+              <span className="font-bold text-green-600">${companyData.financials.netCashFlow.toLocaleString()}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-lg text-[#B74B28]">Cash Balance</span>
-              <span className="text-lg text-[#B74B28]">${companyData.financials.cashBalance.toLocaleString()}</span>
+              <span className="font-bold">Cash Balance</span>
+              <span className="font-bold">${companyData.financials.cashBalance.toLocaleString()}</span>
             </div>
           </div>
         </div>
@@ -271,7 +271,7 @@ export const DataRoom: React.FC<DataRoomProps> = ({
   const renderMarket = () => (
     <div className="space-y-8">
       <div className="bg-[#FFF1D6] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 transform rotate-1">
-        <h2 className="text-3xl text-[#B74B28] mb-6">Market Analysis</h2>
+        <h2 className="text-2xl font-bold text-[#B74B28] mb-6">Market Analysis</h2>
         <div className="grid md:grid-cols-3 gap-6">
           {[
             { title: "TAM", value: companyData.market.tam, desc: "Total Addressable Market", color: "bg-[#7583FA]" },
@@ -282,19 +282,19 @@ export const DataRoom: React.FC<DataRoomProps> = ({
               key={index}
               className={`${market.color} rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 text-white text-center transform ${index % 2 === 0 ? "rotate-1" : "-rotate-1"}`}
             >
-              <h3 className="text-2xl mb-2">{market.title}</h3>
-              <p className="text-3xl mb-2">{market.value}</p>
-              <p className="text-base opacity-90">{market.desc}</p>
+              <h3 className="text-xl font-bold mb-2">{market.title}</h3>
+              <p className="text-2xl font-bold mb-2">{market.value}</p>
+              <p className="text-sm opacity-90">{market.desc}</p>
             </div>
           ))}
         </div>
       </div>
 
       <div className="bg-[#FFF1D6] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 transform -rotate-1">
-        <h3 className="text-2xl text-[#B74B28] mb-4">Competitive Landscape</h3>
+        <h3 className="text-xl font-bold text-[#B74B28] mb-4">Competitive Landscape</h3>
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <h4 className="text-xl text-[#73430C] mb-3">Key Competitors</h4>
+            <h4 className="text-lg font-bold text-[#73430C] mb-3">Key Competitors</h4>
             <div className="space-y-3">
               {companyData.market.competitors.map((competitor, index) => (
                 <div
@@ -302,23 +302,23 @@ export const DataRoom: React.FC<DataRoomProps> = ({
                   className="p-4 bg-[#FAB049] rounded-[10px] border-2 border-black"
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-lg text-[#B74B28]">{competitor.name}</span>
+                    <span className="font-bold text-[#B74B28]">{competitor.name}</span>
                     <Badge className={competitor.type === 'Direct' ? 'bg-[#B74B28] text-white' : 'bg-[#7583FA] text-white'}>
                       {competitor.type}
                     </Badge>
                   </div>
-                  <p className="text-base text-[#73430C]">{competitor.description}</p>
+                  <p className="text-sm text-[#73430C]">{competitor.description}</p>
                 </div>
               ))}
             </div>
           </div>
           <div>
-            <h4 className="text-xl text-[#73430C] mb-3">Market Trends</h4>
+            <h4 className="text-lg font-bold text-[#73430C] mb-3">Market Trends</h4>
             <div className="space-y-3">
               {companyData.market.trends.map((trend, index) => (
                 <div key={index} className="flex items-center gap-3 p-3 bg-[#7583FA] rounded-[8px] border-2 border-black">
                   <TrendingUp size={16} className="text-white flex-shrink-0" />
-                  <span className="text-white text-base">{trend}</span>
+                  <span className="text-white text-sm">{trend}</span>
                 </div>
               ))}
             </div>
@@ -331,7 +331,7 @@ export const DataRoom: React.FC<DataRoomProps> = ({
   const renderTeam = () => (
     <div className="space-y-8">
       <div className="bg-[#FFF1D6] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 transform rotate-1">
-        <h2 className="text-3xl text-[#B74B28] mb-6">Leadership Team</h2>
+        <h2 className="text-2xl font-bold text-[#B74B28] mb-6">Leadership Team</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {companyData.team.leadership.map((member, index) => (
             <div
@@ -341,16 +341,16 @@ export const DataRoom: React.FC<DataRoomProps> = ({
               <div className="w-16 h-16 bg-white rounded-full border-3 border-black mx-auto mb-4 flex items-center justify-center">
                 <Users size={24} className="text-[#B74B28]" />
               </div>
-              <h3 className="text-xl text-center mb-2">{member.name}</h3>
-              <p className="text-base text-center mb-2 opacity-90">{member.role}</p>
-              <p className="text-sm text-center opacity-80">{member.background}</p>
+              <h3 className="text-lg font-bold text-center mb-2">{member.name}</h3>
+              <p className="text-sm text-center mb-2 opacity-90">{member.role}</p>
+              <p className="text-xs text-center opacity-80">{member.background}</p>
             </div>
           ))}
         </div>
       </div>
 
       <div className="bg-[#FFF1D6] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 transform -rotate-1">
-        <h3 className="text-2xl text-[#B74B28] mb-4">Team Statistics</h3>
+        <h3 className="text-xl font-bold text-[#B74B28] mb-4">Team Statistics</h3>
         <div className="grid md:grid-cols-4 gap-6">
           {[
             { label: "Total Employees", value: companyData.team.totalEmployees.toString(), color: "bg-[#7583FA]" },
@@ -362,15 +362,15 @@ export const DataRoom: React.FC<DataRoomProps> = ({
               key={index}
               className={`${stat.color} rounded-[10px] border-3 border-black shadow-[4px_4px_0px_#000000] p-4 text-white text-center transform ${index % 2 === 0 ? "rotate-1" : "-rotate-1"}`}
             >
-              <p className="text-3xl">{stat.value}</p>
-              <p className="text-base opacity-90">{stat.label}</p>
+              <p className="text-2xl font-bold">{stat.value}</p>
+              <p className="text-sm opacity-90">{stat.label}</p>
             </div>
           ))}
         </div>
       </div>
 
       <div className="bg-[#FFF1D6] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 transform rotate-1">
-        <h3 className="text-2xl text-[#B74B28] mb-4">Advisory Board</h3>
+        <h3 className="text-xl font-bold text-[#B74B28] mb-4">Advisory Board</h3>
         <div className="grid md:grid-cols-2 gap-6">
           {companyData.team.advisors.map((advisor, index) => (
             <div key={index} className="flex items-center gap-4 p-4 bg-[#FAB049] rounded-[10px] border-2 border-black">
@@ -378,8 +378,8 @@ export const DataRoom: React.FC<DataRoomProps> = ({
                 <Star size={20} className="text-[#FAB049]" />
               </div>
               <div>
-                <h4 className="text-lg text-[#B74B28]">{advisor.name}</h4>
-                <p className="text-base text-[#73430C]">{advisor.background}</p>
+                <h4 className="font-bold text-[#B74B28]">{advisor.name}</h4>
+                <p className="text-sm text-[#73430C]">{advisor.background}</p>
               </div>
             </div>
           ))}
@@ -391,28 +391,28 @@ export const DataRoom: React.FC<DataRoomProps> = ({
   const renderProduct = () => (
     <div className="space-y-8">
       <div className="bg-[#FFF1D6] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 transform rotate-1">
-        <h2 className="text-3xl text-[#B74B28] mb-6">Product Overview</h2>
+        <h2 className="text-2xl font-bold text-[#B74B28] mb-6">Product Overview</h2>
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <h3 className="text-2xl text-[#73430C] mb-4">Core Features</h3>
+            <h3 className="text-xl font-bold text-[#73430C] mb-4">Core Features</h3>
             <div className="space-y-3">
               {companyData.product.features.map((feature, index) => (
                 <div key={index} className="flex items-center gap-3">
                   <div className="w-6 h-6 bg-[#FAB049] rounded-full border-2 border-black flex items-center justify-center">
-                    <span className="text-sm text-[#B74B28]">✓</span>
+                    <span className="text-xs font-bold text-[#B74B28]">✓</span>
                   </div>
-                  <span className="text-[#73430C] text-lg">{feature}</span>
+                  <span className="text-[#73430C] font-medium">{feature}</span>
                 </div>
               ))}
             </div>
           </div>
           <div>
-            <h3 className="text-2xl text-[#73430C] mb-4">Technology Stack</h3>
+            <h3 className="text-xl font-bold text-[#73430C] mb-4">Technology Stack</h3>
             <div className="grid grid-cols-2 gap-3">
               {companyData.product.techStack.map((tech, index) => (
                 <div
                   key={index}
-                  className="bg-[#7583FA] text-white p-2 rounded-[8px] border-2 border-black text-center text-base"
+                  className="bg-[#7583FA] text-white p-2 rounded-[8px] border-2 border-black text-center font-medium text-sm"
                 >
                   {tech}
                 </div>
@@ -423,7 +423,7 @@ export const DataRoom: React.FC<DataRoomProps> = ({
       </div>
 
       <div className="bg-[#FFF1D6] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 transform -rotate-1">
-        <h3 className="text-2xl text-[#B74B28] mb-4">Product Roadmap</h3>
+        <h3 className="text-xl font-bold text-[#B74B28] mb-4">Product Roadmap</h3>
         <div className="space-y-6">
           {companyData.product.roadmap.map((roadmap, index) => (
             <div
@@ -431,7 +431,7 @@ export const DataRoom: React.FC<DataRoomProps> = ({
               className={`p-4 rounded-[10px] border-3 border-black ${index === 0 ? "bg-[#FAB049]" : "bg-[#7583FA]"}`}
             >
               <div className="flex items-center justify-between mb-3">
-                <h4 className="text-xl text-white">{roadmap.quarter}</h4>
+                <h4 className="text-lg font-bold text-white">{roadmap.quarter}</h4>
                 <Badge className={`${index === 0 ? "bg-[#B74B28]" : "bg-white text-[#7583FA]"}`}>
                   {roadmap.status}
                 </Badge>
@@ -440,7 +440,7 @@ export const DataRoom: React.FC<DataRoomProps> = ({
                 {roadmap.features.map((feature, featureIndex) => (
                   <span
                     key={featureIndex}
-                    className="bg-white text-[#B74B28] px-3 py-1 rounded-[6px] border border-black text-base"
+                    className="bg-white text-[#B74B28] px-3 py-1 rounded-[6px] border border-black text-sm font-medium"
                   >
                     {feature}
                   </span>
@@ -456,25 +456,25 @@ export const DataRoom: React.FC<DataRoomProps> = ({
   const renderLegal = () => (
     <div className="space-y-8">
       <div className="bg-[#FFF1D6] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 transform rotate-1">
-        <h2 className="text-3xl text-[#B74B28] mb-6">Legal Structure</h2>
+        <h2 className="text-2xl font-bold text-[#B74B28] mb-6">Legal Structure</h2>
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <h3 className="text-2xl text-[#73430C] mb-4">Corporate Information</h3>
+            <h3 className="text-xl font-bold text-[#73430C] mb-4">Corporate Information</h3>
             <div className="space-y-3 text-[#73430C]">
-              <p className="text-lg"><span className="text-[#B74B28]">Entity Type:</span> {companyData.legal.entityType}</p>
-              <p className="text-lg"><span className="text-[#B74B28]">Incorporation Date:</span> {companyData.legal.incorporationDate}</p>
-              <p className="text-lg"><span className="text-[#B74B28]">EIN:</span> {companyData.legal.ein}</p>
-              <p className="text-lg"><span className="text-[#B74B28]">Address:</span> {companyData.legal.address}</p>
+              <p><strong>Entity Type:</strong> {companyData.legal.entityType}</p>
+              <p><strong>Incorporation Date:</strong> {companyData.legal.incorporationDate}</p>
+              <p><strong>EIN:</strong> {companyData.legal.ein}</p>
+              <p><strong>Address:</strong> {companyData.legal.address}</p>
             </div>
           </div>
           <div>
-            <h3 className="text-2xl text-[#73430C] mb-4">Intellectual Property</h3>
+            <h3 className="text-xl font-bold text-[#73430C] mb-4">Intellectual Property</h3>
             <div className="space-y-3">
               {companyData.legal.intellectualProperty.map((ip, index) => (
                 <div key={index} className="flex items-center justify-between p-3 bg-[#FAB049] rounded-[8px] border-2 border-black">
                   <div>
-                    <span className="text-lg text-[#B74B28]">{ip.name}</span>
-                    <p className="text-base text-[#73430C]">{ip.type}</p>
+                    <span className="font-medium text-[#B74B28]">{ip.name}</span>
+                    <p className="text-sm text-[#73430C]">{ip.type}</p>
                   </div>
                   <Badge className="bg-[#B74B28] text-white">{ip.status}</Badge>
                 </div>
@@ -485,10 +485,10 @@ export const DataRoom: React.FC<DataRoomProps> = ({
       </div>
 
       <div className="bg-[#FFF1D6] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 transform -rotate-1">
-        <h3 className="text-2xl text-[#B74B28] mb-4">Compliance & Certifications</h3>
+        <h3 className="text-xl font-bold text-[#B74B28] mb-4">Compliance & Certifications</h3>
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <h4 className="text-xl text-[#73430C] mb-3">Compliance Standards</h4>
+            <h4 className="text-lg font-bold text-[#73430C] mb-3">Compliance Standards</h4>
             <div className="space-y-2">
               {companyData.legal.compliance.map((compliance, index) => (
                 <div
@@ -496,7 +496,7 @@ export const DataRoom: React.FC<DataRoomProps> = ({
                   className="flex items-center gap-3 p-3 bg-[#7583FA] rounded-[8px] border-2 border-black"
                 >
                   <Shield size={16} className="text-white" />
-                  <span className="text-lg text-white">{compliance}</span>
+                  <span className="font-medium text-white">{compliance}</span>
                 </div>
               ))}
             </div>
@@ -509,16 +509,16 @@ export const DataRoom: React.FC<DataRoomProps> = ({
   const renderMetrics = () => (
     <div className="space-y-8">
       <div className="bg-[#FFF1D6] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 transform rotate-1">
-        <h2 className="text-3xl text-[#B74B28] mb-6">Key Performance Indicators</h2>
+        <h2 className="text-2xl font-bold text-[#B74B28] mb-6">Key Performance Indicators</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {companyData.metrics.map((metric, index) => (
             <div
               key={index}
               className={`bg-[#7583FA] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 text-white text-center transform ${index % 2 === 0 ? "rotate-1" : "-rotate-1"}`}
             >
-              <h3 className="text-xl mb-2">{metric.label}</h3>
-              <p className="text-3xl mb-2">{metric.value}</p>
-              <p className="text-base opacity-90">{metric.change}</p>
+              <h3 className="text-lg font-bold mb-2">{metric.label}</h3>
+              <p className="text-2xl font-bold mb-2">{metric.value}</p>
+              <p className="text-sm opacity-90">{metric.change}</p>
             </div>
           ))}
         </div>
@@ -529,7 +529,7 @@ export const DataRoom: React.FC<DataRoomProps> = ({
   const renderFunding = () => (
     <div className="space-y-8">
       <div className="bg-[#FFF1D6] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 transform rotate-1">
-        <h2 className="text-3xl text-[#B74B28] mb-6">Funding Overview</h2>
+        <h2 className="text-2xl font-bold text-[#B74B28] mb-6">Funding Overview</h2>
         <div className="grid md:grid-cols-3 gap-6">
           {[
             { title: "Total Raised", value: companyData.funding.totalRaised, desc: "To Date", color: "bg-[#7583FA]" },
@@ -540,16 +540,16 @@ export const DataRoom: React.FC<DataRoomProps> = ({
               key={index}
               className={`${funding.color} rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 text-white text-center transform ${index % 2 === 0 ? "rotate-1" : "-rotate-1"}`}
             >
-              <h3 className="text-2xl mb-2">{funding.title}</h3>
-              <p className="text-3xl mb-2">{funding.value}</p>
-              <p className="text-base opacity-90">{funding.desc}</p>
+              <h3 className="text-xl font-bold mb-2">{funding.title}</h3>
+              <p className="text-2xl font-bold mb-2">{funding.value}</p>
+              <p className="text-sm opacity-90">{funding.desc}</p>
             </div>
           ))}
         </div>
       </div>
 
       <div className="bg-[#FFF1D6] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 transform -rotate-1">
-        <h3 className="text-2xl text-[#B74B28] mb-4">Investor Portfolio</h3>
+        <h3 className="text-xl font-bold text-[#B74B28] mb-4">Investor Portfolio</h3>
         <div className="space-y-4">
           {companyData.funding.investors.map((investor, index) => (
             <div key={index} className="flex items-center justify-between p-4 bg-[#FAB049] rounded-[10px] border-2 border-black">
@@ -558,12 +558,12 @@ export const DataRoom: React.FC<DataRoomProps> = ({
                   <DollarSign size={20} className="text-[#FAB049]" />
                 </div>
                 <div>
-                  <h4 className="text-lg text-[#B74B28]">{investor.name}</h4>
-                  <p className="text-base text-[#73430C]">{investor.type} Investor</p>
+                  <h4 className="font-bold text-[#B74B28]">{investor.name}</h4>
+                  <p className="text-sm text-[#73430C]">{investor.type} Investor</p>
                 </div>
               </div>
               <div className="text-right">
-                <p className="text-lg text-[#B74B28]">{investor.amount}</p>
+                <p className="font-bold text-[#B74B28]">{investor.amount}</p>
                 <Badge className="bg-[#B74B28] text-white">{investor.type}</Badge>
               </div>
             </div>
@@ -572,8 +572,8 @@ export const DataRoom: React.FC<DataRoomProps> = ({
       </div>
 
       <div className="bg-[#FFF1D6] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 transform rotate-1">
-        <h3 className="text-2xl text-[#B74B28] mb-4">Use of Funds</h3>
-        <p className="text-xl text-[#73430C] leading-relaxed">{companyData.funding.useOfFunds}</p>
+        <h3 className="text-xl font-bold text-[#B74B28] mb-4">Use of Funds</h3>
+        <p className="text-lg text-[#73430C] leading-relaxed">{companyData.funding.useOfFunds}</p>
       </div>
     </div>
   );
@@ -631,8 +631,8 @@ export const DataRoom: React.FC<DataRoomProps> = ({
             <Building size={24} className="text-[#B74B28]" />
           </div>
           <div>
-            <h1 className="text-4xl md:text-5xl text-[#B74B28] transform rotate-1">DataVault</h1>
-            <p className="text-base text-[#B74B28] opacity-75">{companyData.overview.name}</p>
+            <h1 className="text-3xl md:text-4xl font-bold text-[#B74B28] transform rotate-1">DataVault</h1>
+            <p className="text-sm text-[#B74B28] opacity-75">{companyData.overview.name}</p>
             {isAdmin && (
               <Badge variant="secondary" className="text-xs">Admin Mode</Badge>
             )}
@@ -646,14 +646,14 @@ export const DataRoom: React.FC<DataRoomProps> = ({
             className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-black rounded-lg hover:bg-[#fab049] transition-colors"
           >
             <Search size={16} className="text-[#B74B28]" />
-            <span className="text-[#B74B28] text-lg">Search</span>
+            <span className="text-[#B74B28] font-medium">Search</span>
           </button>
           
           {sections.slice(0, 4).map((section) => (
             <button
               key={section.id}
               onClick={() => setActiveSection(section.id)}
-              className={`px-4 py-2 rounded-lg text-lg transition-all ${
+              className={`px-4 py-2 rounded-lg font-medium transition-all ${
                 activeSection === section.id 
                   ? 'bg-[#fab049] text-[#B74B28] border-2 border-black shadow-[3px_3px_0px_#000000]' 
                   : 'text-[#B74B28] hover:bg-[#fab049] hover:bg-opacity-50'
@@ -672,7 +672,7 @@ export const DataRoom: React.FC<DataRoomProps> = ({
       {isMobileMenuOpen && (
         <div className="fixed inset-0 bg-[#FFF1D6] z-50 flex flex-col p-6">
           <div className="flex justify-between items-center mb-8">
-            <h1 className="text-5xl text-[#B74B28] transform -rotate-3">DataVault</h1>
+            <h1 className="text-4xl font-bold text-[#B74B28] transform -rotate-3">DataVault</h1>
             <button onClick={() => setIsMobileMenuOpen(false)} className="p-2">
               <X size={24} />
             </button>
@@ -687,7 +687,7 @@ export const DataRoom: React.FC<DataRoomProps> = ({
             className="flex items-center gap-3 p-4 mb-4 bg-[#fab049] rounded-lg border-2 border-black shadow-[3px_3px_0px_#000000] text-[#B74B28]"
           >
             <Search size={20} />
-            <span className="text-xl">Search Data Room</span>
+            <span className="font-medium">Search Data Room</span>
           </button>
 
           <nav className="flex flex-col gap-4">
@@ -698,7 +698,7 @@ export const DataRoom: React.FC<DataRoomProps> = ({
                   setActiveSection(section.id);
                   setIsMobileMenuOpen(false);
                 }}
-                className="text-left p-4 text-xl bg-[#fab049] rounded-lg border-2 border-black shadow-[3px_3px_0px_#000000] text-[#B74B28]"
+                className="text-left p-4 text-lg font-medium bg-[#fab049] rounded-lg border-2 border-black shadow-[3px_3px_0px_#000000] text-[#B74B28]"
               >
                 {section.name}
               </button>
@@ -725,14 +725,14 @@ export const DataRoom: React.FC<DataRoomProps> = ({
                 }`}
               >
                 <section.icon size={20} />
-                <span className="text-lg">{section.name}</span>
+                <span className="font-medium">{section.name}</span>
               </button>
             ))}
           </nav>
 
           {/* Document Quick Access */}
           <div className="mt-8">
-            <h3 className="text-xl text-[#B74B28] mb-4 transform rotate-1">📌 Pinned Documents</h3>
+            <h3 className="text-lg font-bold text-[#B74B28] mb-4 transform rotate-1">📌 Pinned Documents</h3>
             <div className="space-y-2">
               {pinnedDocuments.length > 0 ? (
                 pinnedDocuments.map((doc, index) => (
@@ -743,8 +743,8 @@ export const DataRoom: React.FC<DataRoomProps> = ({
                   >
                     <FileText size={16} className="text-[#B74B28] flex-shrink-0" />
                     <div className="flex-1 min-w-0">
-                      <p className="text-base text-[#73430C] truncate">{doc.name}</p>
-                      <p className="text-sm text-[#9C6220]">{doc.size}</p>
+                      <p className="text-sm font-medium text-[#73430C] truncate">{doc.name}</p>
+                      <p className="text-xs text-[#9C6220]">{doc.size}</p>
                     </div>
                     <div className="flex items-center gap-1 flex-shrink-0">
                       <Pin size={12} className="text-[#B74B28]" />
@@ -753,7 +753,7 @@ export const DataRoom: React.FC<DataRoomProps> = ({
                   </button>
                 ))
               ) : (
-                <p className="text-base text-[#73430C] italic">No pinned documents</p>
+                <p className="text-sm text-[#73430C] italic">No pinned documents</p>
               )}
             </div>
           </div>
@@ -774,7 +774,7 @@ export const DataRoom: React.FC<DataRoomProps> = ({
                       })()}
                     </div>
                   )}
-                  <h1 className="text-4xl md:text-5xl text-[#B74B28]">
+                  <h1 className="text-3xl md:text-4xl font-bold text-[#B74B28]">
                     {sections.find((s) => s.id === activeSection)?.name}
                   </h1>
                 </div>

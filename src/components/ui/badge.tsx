@@ -11,7 +11,7 @@ export const Badge: React.FC<BadgeProps> = ({
   className = '', 
   variant = 'default' 
 }) => {
-  const baseClasses = "inline-flex items-center px-2 py-1 rounded-full text-base border-2 border-black";
+  const baseClasses = "inline-flex items-center px-2 py-1 rounded-full text-xs font-bold border-2 border-black";
   
   const variantClasses = {
     default: "bg-[#fab049] text-[#B74B28]",
