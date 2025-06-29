@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   Settings, 
-  Users, 
   FileText, 
   BarChart3, 
   Building, 
@@ -11,11 +10,13 @@ import {
   PieChart,
   Save,
   Check,
-  Clock
+  Clock,
+  Plus,
+  Trash2,
+  Users
 } from 'lucide-react';
-import { CompanyData, User } from '../types';
+import { CompanyData } from '../types';
 import { Button } from './ui/button';
-import { Badge } from './ui/badge';
 import { DocumentManager } from './DocumentManager';
 import { MetricsChart } from './MetricsChart';
 
@@ -77,6 +78,31 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
     handleDataChange(newData);
   };
 
+  // Helper functions for array operations
+  const addArrayItem = (path: string[], newItem: any) => {
+    const newData = { ...localData };
+    let current: any = newData;
+    
+    for (let i = 0; i < path.length - 1; i++) {
+      current = current[path[i]];
+    }
+    
+    current[path[path.length - 1]] = [...current[path[path.length - 1]], newItem];
+    handleDataChange(newData);
+  };
+
+  const removeArrayItem = (path: string[], index: number) => {
+    const newData = { ...localData };
+    let current: any = newData;
+    
+    for (let i = 0; i < path.length - 1; i++) {
+      current = current[path[i]];
+    }
+    
+    current[path[path.length - 1]] = current[path[path.length - 1]].filter((_: any, i: number) => i !== index);
+    handleDataChange(newData);
+  };
+
   const sections = [
     { id: "overview", name: "Overview", icon: Building },
     { id: "financials", name: "Financials", icon: DollarSign },
@@ -87,7 +113,6 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
     { id: "funding", name: "Funding", icon: PieChart },
     { id: "metrics", name: "Metrics", icon: BarChart3 },
     { id: "documents", name: "Documents", icon: FileText },
-    { id: "users", name: "Users", icon: Users },
   ];
 
   const getSaveStatusIcon = () => {
@@ -367,40 +392,85 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
         
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-bold text-[#B74B28] mb-2">Market Trends</label>
+            <div className="flex items-center justify-between mb-4">
+              <label className="block text-sm font-bold text-[#B74B28]">Market Trends</label>
+              <button
+                onClick={() => addArrayItem(['market', 'trends'], '')}
+                className="flex items-center gap-1 px-3 py-1 bg-[#fab049] text-[#B74B28] rounded-lg border-2 border-black text-sm font-medium hover:bg-[#B74B28] hover:text-white transition-colors"
+              >
+                <Plus size={14} />
+                Add Trend
+              </button>
+            </div>
             <div className="space-y-2">
               {localData.market.trends.map((trend, index) => (
-                <input
-                  key={index}
-                  type="text"
-                  value={trend}
-                  onChange={(e) => {
-                    const newTrends = [...localData.market.trends];
-                    newTrends[index] = e.target.value;
-                    updateNestedData(['market', 'trends'], newTrends);
-                  }}
-                  className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
-                />
+                <div key={index} className="flex items-center gap-2">
+                  <input
+                    type="text"
+                    value={trend}
+                    onChange={(e) => {
+                      const newTrends = [...localData.market.trends];
+                      newTrends[index] = e.target.value;
+                      updateNestedData(['market', 'trends'], newTrends);
+                    }}
+                    className="flex-1 p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                  />
+                  <button
+                    onClick={() => removeArrayItem(['market', 'trends'], index)}
+                    className="p-2 bg-red-500 text-white rounded-lg border-2 border-black hover:bg-red-600 transition-colors"
+                  >
+                    <Trash2 size={14} />
+                  </button>
+                </div>
               ))}
             </div>
           </div>
           
           <div>
-            <label className="block text-sm font-bold text-[#B74B28] mb-2">Competitors</label>
+            <div className="flex items-center justify-between mb-4">
+              <label className="block text-sm font-bold text-[#B74B28]">Competitors</label>
+              <button
+                onClick={() => addArrayItem(['market', 'competitors'], { name: '', type: 'Direct', description: '' })}
+                className="flex items-center gap-1 px-3 py-1 bg-[#fab049] text-[#B74B28] rounded-lg border-2 border-black text-sm font-medium hover:bg-[#B74B28] hover:text-white transition-colors"
+              >
+                <Plus size={14} />
+                Add Competitor
+              </button>
+            </div>
             <div className="space-y-3">
               {localData.market.competitors.map((competitor, index) => (
                 <div key={index} className="p-3 bg-white rounded-[8px] border-2 border-black space-y-2">
-                  <input
-                    type="text"
-                    value={competitor.name}
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="text"
+                      value={competitor.name}
+                      onChange={(e) => {
+                        const newCompetitors = [...localData.market.competitors];
+                        newCompetitors[index] = { ...competitor, name: e.target.value };
+                        updateNestedData(['market', 'competitors'], newCompetitors);
+                      }}
+                      className="flex-1 p-2 border border-gray-300 rounded text-sm"
+                      placeholder="Competitor name"
+                    />
+                    <button
+                      onClick={() => removeArrayItem(['market', 'competitors'], index)}
+                      className="p-1 bg-red-500 text-white rounded border border-black hover:bg-red-600 transition-colors"
+                    >
+                      <Trash2 size={12} />
+                    </button>
+                  </div>
+                  <select
+                    value={competitor.type}
                     onChange={(e) => {
                       const newCompetitors = [...localData.market.competitors];
-                      newCompetitors[index] = { ...competitor, name: e.target.value };
+                      newCompetitors[index] = { ...competitor, type: e.target.value };
                       updateNestedData(['market', 'competitors'], newCompetitors);
                     }}
                     className="w-full p-2 border border-gray-300 rounded text-sm"
-                    placeholder="Competitor name"
-                  />
+                  >
+                    <option value="Direct">Direct</option>
+                    <option value="Indirect">Indirect</option>
+                  </select>
                   <input
                     type="text"
                     value={competitor.description}
@@ -470,20 +540,101 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-bold text-[#B74B28] mb-2">Compliance Standards</label>
+              <div className="flex items-center justify-between mb-4">
+                <label className="block text-sm font-bold text-[#B74B28]">Compliance Standards</label>
+                <button
+                  onClick={() => addArrayItem(['legal', 'compliance'], '')}
+                  className="flex items-center gap-1 px-3 py-1 bg-[#fab049] text-[#B74B28] rounded-lg border-2 border-black text-sm font-medium hover:bg-[#B74B28] hover:text-white transition-colors"
+                >
+                  <Plus size={14} />
+                  Add Standard
+                </button>
+              </div>
               <div className="space-y-2">
                 {localData.legal.compliance.map((compliance, index) => (
-                  <input
-                    key={index}
-                    type="text"
-                    value={compliance}
-                    onChange={(e) => {
-                      const newCompliance = [...localData.legal.compliance];
-                      newCompliance[index] = e.target.value;
-                      updateNestedData(['legal', 'compliance'], newCompliance);
-                    }}
-                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
-                  />
+                  <div key={index} className="flex items-center gap-2">
+                    <input
+                      type="text"
+                      value={compliance}
+                      onChange={(e) => {
+                        const newCompliance = [...localData.legal.compliance];
+                        newCompliance[index] = e.target.value;
+                        updateNestedData(['legal', 'compliance'], newCompliance);
+                      }}
+                      className="flex-1 p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                    />
+                    <button
+                      onClick={() => removeArrayItem(['legal', 'compliance'], index)}
+                      className="p-2 bg-red-500 text-white rounded-lg border-2 border-black hover:bg-red-600 transition-colors"
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <label className="block text-sm font-bold text-[#B74B28]">Intellectual Property</label>
+                <button
+                  onClick={() => addArrayItem(['legal', 'intellectualProperty'], { type: 'Patent', name: '', status: 'Filed' })}
+                  className="flex items-center gap-1 px-3 py-1 bg-[#fab049] text-[#B74B28] rounded-lg border-2 border-black text-sm font-medium hover:bg-[#B74B28] hover:text-white transition-colors"
+                >
+                  <Plus size={14} />
+                  Add IP
+                </button>
+              </div>
+              <div className="space-y-3">
+                {localData.legal.intellectualProperty.map((ip, index) => (
+                  <div key={index} className="p-3 bg-white rounded-[8px] border-2 border-black space-y-2">
+                    <div className="flex items-center gap-2">
+                      <select
+                        value={ip.type}
+                        onChange={(e) => {
+                          const newIP = [...localData.legal.intellectualProperty];
+                          newIP[index] = { ...ip, type: e.target.value };
+                          updateNestedData(['legal', 'intellectualProperty'], newIP);
+                        }}
+                        className="p-2 border border-gray-300 rounded text-sm"
+                      >
+                        <option value="Patent">Patent</option>
+                        <option value="Trademark">Trademark</option>
+                        <option value="Copyright">Copyright</option>
+                      </select>
+                      <button
+                        onClick={() => removeArrayItem(['legal', 'intellectualProperty'], index)}
+                        className="p-1 bg-red-500 text-white rounded border border-black hover:bg-red-600 transition-colors"
+                      >
+                        <Trash2 size={12} />
+                      </button>
+                    </div>
+                    <input
+                      type="text"
+                      value={ip.name}
+                      onChange={(e) => {
+                        const newIP = [...localData.legal.intellectualProperty];
+                        newIP[index] = { ...ip, name: e.target.value };
+                        updateNestedData(['legal', 'intellectualProperty'], newIP);
+                      }}
+                      className="w-full p-2 border border-gray-300 rounded text-sm"
+                      placeholder="IP name"
+                    />
+                    <select
+                      value={ip.status}
+                      onChange={(e) => {
+                        const newIP = [...localData.legal.intellectualProperty];
+                        newIP[index] = { ...ip, status: e.target.value };
+                        updateNestedData(['legal', 'intellectualProperty'], newIP);
+                      }}
+                      className="w-full p-2 border border-gray-300 rounded text-sm"
+                    >
+                      <option value="Filed">Filed</option>
+                      <option value="Approved">Approved</option>
+                      <option value="Pending">Pending</option>
+                      <option value="Rejected">Rejected</option>
+                    </select>
+                  </div>
                 ))}
               </div>
             </div>
@@ -552,43 +703,62 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
         </div>
         
         <div>
-          <label className="block text-sm font-bold text-[#B74B28] mb-2">Investors</label>
+          <div className="flex items-center justify-between mb-4">
+            <label className="block text-sm font-bold text-[#B74B28]">Investors</label>
+            <button
+              onClick={() => addArrayItem(['funding', 'investors'], { name: '', type: 'VC', amount: '' })}
+              className="flex items-center gap-1 px-3 py-1 bg-[#fab049] text-[#B74B28] rounded-lg border-2 border-black text-sm font-medium hover:bg-[#B74B28] hover:text-white transition-colors"
+            >
+              <Plus size={14} />
+              Add Investor
+            </button>
+          </div>
           <div className="space-y-3">
             {localData.funding.investors.map((investor, index) => (
-              <div key={index} className="p-3 bg-white rounded-[8px] border-2 border-black grid grid-cols-3 gap-3">
-                <input
-                  type="text"
-                  value={investor.name}
-                  onChange={(e) => {
-                    const newInvestors = [...localData.funding.investors];
-                    newInvestors[index] = { ...investor, name: e.target.value };
-                    updateNestedData(['funding', 'investors'], newInvestors);
-                  }}
-                  className="p-2 border border-gray-300 rounded text-sm"
-                  placeholder="Investor name"
-                />
-                <input
-                  type="text"
-                  value={investor.type}
-                  onChange={(e) => {
-                    const newInvestors = [...localData.funding.investors];
-                    newInvestors[index] = { ...investor, type: e.target.value };
-                    updateNestedData(['funding', 'investors'], newInvestors);
-                  }}
-                  className="p-2 border border-gray-300 rounded text-sm"
-                  placeholder="Type"
-                />
-                <input
-                  type="text"
-                  value={investor.amount}
-                  onChange={(e) => {
-                    const newInvestors = [...localData.funding.investors];
-                    newInvestors[index] = { ...investor, amount: e.target.value };
-                    updateNestedData(['funding', 'investors'], newInvestors);
-                  }}
-                  className="p-2 border border-gray-300 rounded text-sm"
-                  placeholder="Amount"
-                />
+              <div key={index} className="p-3 bg-white rounded-[8px] border-2 border-black">
+                <div className="grid grid-cols-4 gap-3 items-center">
+                  <input
+                    type="text"
+                    value={investor.name}
+                    onChange={(e) => {
+                      const newInvestors = [...localData.funding.investors];
+                      newInvestors[index] = { ...investor, name: e.target.value };
+                      updateNestedData(['funding', 'investors'], newInvestors);
+                    }}
+                    className="p-2 border border-gray-300 rounded text-sm"
+                    placeholder="Investor name"
+                  />
+                  <select
+                    value={investor.type}
+                    onChange={(e) => {
+                      const newInvestors = [...localData.funding.investors];
+                      newInvestors[index] = { ...investor, type: e.target.value };
+                      updateNestedData(['funding', 'investors'], newInvestors);
+                    }}
+                    className="p-2 border border-gray-300 rounded text-sm"
+                  >
+                    <option value="VC">VC</option>
+                    <option value="Angel">Angel</option>
+                    <option value="Strategic">Strategic</option>
+                  </select>
+                  <input
+                    type="text"
+                    value={investor.amount}
+                    onChange={(e) => {
+                      const newInvestors = [...localData.funding.investors];
+                      newInvestors[index] = { ...investor, amount: e.target.value };
+                      updateNestedData(['funding', 'investors'], newInvestors);
+                    }}
+                    className="p-2 border border-gray-300 rounded text-sm"
+                    placeholder="Amount"
+                  />
+                  <button
+                    onClick={() => removeArrayItem(['funding', 'investors'], index)}
+                    className="p-2 bg-red-500 text-white rounded border border-black hover:bg-red-600 transition-colors"
+                  >
+                    <Trash2 size={14} />
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -601,14 +771,31 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
     <div className="space-y-8">
       <div className="bg-[#FFF1D6] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6">
         <h2 className="text-2xl font-bold text-[#B74B28] mb-6">Team Management</h2>
-        <p className="text-[#73430C] mb-6">Manage team information and structure</p>
         
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <h3 className="text-xl font-bold text-[#B74B28] mb-4">Leadership Team</h3>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-xl font-bold text-[#B74B28]">Leadership Team</h3>
+              <button
+                onClick={() => addArrayItem(['team', 'leadership'], { name: '', role: '', background: '' })}
+                className="flex items-center gap-1 px-3 py-1 bg-[#fab049] text-[#B74B28] rounded-lg border-2 border-black text-sm font-medium hover:bg-[#B74B28] hover:text-white transition-colors"
+              >
+                <Plus size={14} />
+                Add Member
+              </button>
+            </div>
             <div className="space-y-4">
               {localData.team.leadership.map((member, index) => (
                 <div key={index} className="p-4 bg-white rounded-[10px] border-2 border-black">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-bold text-[#B74B28]">Member {index + 1}</span>
+                    <button
+                      onClick={() => removeArrayItem(['team', 'leadership'], index)}
+                      className="p-1 bg-red-500 text-white rounded border border-black hover:bg-red-600 transition-colors"
+                    >
+                      <Trash2 size={12} />
+                    </button>
+                  </div>
                   <input
                     type="text"
                     value={member.name}
@@ -647,10 +834,28 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
           </div>
           
           <div>
-            <h3 className="text-xl font-bold text-[#B74B28] mb-4">Advisory Board</h3>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-xl font-bold text-[#B74B28]">Advisory Board</h3>
+              <button
+                onClick={() => addArrayItem(['team', 'advisors'], { name: '', background: '' })}
+                className="flex items-center gap-1 px-3 py-1 bg-[#fab049] text-[#B74B28] rounded-lg border-2 border-black text-sm font-medium hover:bg-[#B74B28] hover:text-white transition-colors"
+              >
+                <Plus size={14} />
+                Add Advisor
+              </button>
+            </div>
             <div className="space-y-4">
               {localData.team.advisors.map((advisor, index) => (
                 <div key={index} className="p-4 bg-white rounded-[10px] border-2 border-black">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-bold text-[#B74B28]">Advisor {index + 1}</span>
+                    <button
+                      onClick={() => removeArrayItem(['team', 'advisors'], index)}
+                      className="p-1 bg-red-500 text-white rounded border border-black hover:bg-red-600 transition-colors"
+                    >
+                      <Trash2 size={12} />
+                    </button>
+                  </div>
                   <input
                     type="text"
                     value={advisor.name}
@@ -677,6 +882,49 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
             </div>
           </div>
         </div>
+
+        {/* Team Statistics */}
+        <div className="mt-8 p-6 bg-white rounded-[10px] border-2 border-black">
+          <h3 className="text-xl font-bold text-[#B74B28] mb-4">Team Statistics</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div>
+              <label className="block text-sm font-bold text-[#B74B28] mb-2">Total Employees</label>
+              <input
+                type="number"
+                value={localData.team.totalEmployees}
+                onChange={(e) => updateNestedData(['team', 'totalEmployees'], parseInt(e.target.value) || 0)}
+                className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-bold text-[#B74B28] mb-2">Engineering</label>
+              <input
+                type="number"
+                value={localData.team.engineering}
+                onChange={(e) => updateNestedData(['team', 'engineering'], parseInt(e.target.value) || 0)}
+                className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-bold text-[#B74B28] mb-2">Sales & Marketing</label>
+              <input
+                type="number"
+                value={localData.team.salesMarketing}
+                onChange={(e) => updateNestedData(['team', 'salesMarketing'], parseInt(e.target.value) || 0)}
+                className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-bold text-[#B74B28] mb-2">Operations</label>
+              <input
+                type="number"
+                value={localData.team.operations}
+                onChange={(e) => updateNestedData(['team', 'operations'], parseInt(e.target.value) || 0)}
+                className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -685,45 +933,171 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
     <div className="space-y-8">
       <div className="bg-[#FFF1D6] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6">
         <h2 className="text-2xl font-bold text-[#B74B28] mb-6">Product Management</h2>
-        <p className="text-[#73430C] mb-6">Manage product features, tech stack, and roadmap</p>
         
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <h3 className="text-xl font-bold text-[#B74B28] mb-4">Core Features</h3>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-xl font-bold text-[#B74B28]">Core Features</h3>
+              <button
+                onClick={() => addArrayItem(['product', 'features'], '')}
+                className="flex items-center gap-1 px-3 py-1 bg-[#fab049] text-[#B74B28] rounded-lg border-2 border-black text-sm font-medium hover:bg-[#B74B28] hover:text-white transition-colors"
+              >
+                <Plus size={14} />
+                Add Feature
+              </button>
+            </div>
             <div className="space-y-2">
               {localData.product.features.map((feature, index) => (
-                <input
-                  key={index}
-                  type="text"
-                  value={feature}
-                  onChange={(e) => {
-                    const newFeatures = [...localData.product.features];
-                    newFeatures[index] = e.target.value;
-                    updateNestedData(['product', 'features'], newFeatures);
-                  }}
-                  className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
-                />
+                <div key={index} className="flex items-center gap-2">
+                  <input
+                    type="text"
+                    value={feature}
+                    onChange={(e) => {
+                      const newFeatures = [...localData.product.features];
+                      newFeatures[index] = e.target.value;
+                      updateNestedData(['product', 'features'], newFeatures);
+                    }}
+                    className="flex-1 p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                  />
+                  <button
+                    onClick={() => removeArrayItem(['product', 'features'], index)}
+                    className="p-2 bg-red-500 text-white rounded-lg border-2 border-black hover:bg-red-600 transition-colors"
+                  >
+                    <Trash2 size={14} />
+                  </button>
+                </div>
               ))}
             </div>
           </div>
           
           <div>
-            <h3 className="text-xl font-bold text-[#B74B28] mb-4">Technology Stack</h3>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-xl font-bold text-[#B74B28]">Technology Stack</h3>
+              <button
+                onClick={() => addArrayItem(['product', 'techStack'], '')}
+                className="flex items-center gap-1 px-3 py-1 bg-[#fab049] text-[#B74B28] rounded-lg border-2 border-black text-sm font-medium hover:bg-[#B74B28] hover:text-white transition-colors"
+              >
+                <Plus size={14} />
+                Add Tech
+              </button>
+            </div>
             <div className="space-y-2">
               {localData.product.techStack.map((tech, index) => (
-                <input
-                  key={index}
-                  type="text"
-                  value={tech}
-                  onChange={(e) => {
-                    const newTechStack = [...localData.product.techStack];
-                    newTechStack[index] = e.target.value;
-                    updateNestedData(['product', 'techStack'], newTechStack);
-                  }}
-                  className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
-                />
+                <div key={index} className="flex items-center gap-2">
+                  <input
+                    type="text"
+                    value={tech}
+                    onChange={(e) => {
+                      const newTechStack = [...localData.product.techStack];
+                      newTechStack[index] = e.target.value;
+                      updateNestedData(['product', 'techStack'], newTechStack);
+                    }}
+                    className="flex-1 p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                  />
+                  <button
+                    onClick={() => removeArrayItem(['product', 'techStack'], index)}
+                    className="p-2 bg-red-500 text-white rounded-lg border-2 border-black hover:bg-red-600 transition-colors"
+                  >
+                    <Trash2 size={14} />
+                  </button>
+                </div>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* Product Roadmap */}
+        <div className="mt-8">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-xl font-bold text-[#B74B28]">Product Roadmap</h3>
+            <button
+              onClick={() => addArrayItem(['product', 'roadmap'], { quarter: '', features: [], status: 'Planned' })}
+              className="flex items-center gap-1 px-3 py-1 bg-[#fab049] text-[#B74B28] rounded-lg border-2 border-black text-sm font-medium hover:bg-[#B74B28] hover:text-white transition-colors"
+            >
+              <Plus size={14} />
+              Add Quarter
+            </button>
+          </div>
+          <div className="space-y-4">
+            {localData.product.roadmap.map((roadmap, index) => (
+              <div key={index} className="p-4 bg-white rounded-[10px] border-2 border-black">
+                <div className="flex items-center justify-between mb-3">
+                  <input
+                    type="text"
+                    value={roadmap.quarter}
+                    onChange={(e) => {
+                      const newRoadmap = [...localData.product.roadmap];
+                      newRoadmap[index] = { ...roadmap, quarter: e.target.value };
+                      updateNestedData(['product', 'roadmap'], newRoadmap);
+                    }}
+                    className="p-2 border border-gray-300 rounded font-bold"
+                    placeholder="Quarter (e.g., Q1 2025)"
+                  />
+                  <select
+                    value={roadmap.status}
+                    onChange={(e) => {
+                      const newRoadmap = [...localData.product.roadmap];
+                      newRoadmap[index] = { ...roadmap, status: e.target.value };
+                      updateNestedData(['product', 'roadmap'], newRoadmap);
+                    }}
+                    className="p-2 border border-gray-300 rounded"
+                  >
+                    <option value="Planned">Planned</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                  </select>
+                  <button
+                    onClick={() => removeArrayItem(['product', 'roadmap'], index)}
+                    className="p-2 bg-red-500 text-white rounded border border-black hover:bg-red-600 transition-colors"
+                  >
+                    <Trash2 size={14} />
+                  </button>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <label className="text-sm font-bold text-[#B74B28]">Features</label>
+                    <button
+                      onClick={() => {
+                        const newRoadmap = [...localData.product.roadmap];
+                        newRoadmap[index] = { ...roadmap, features: [...roadmap.features, ''] };
+                        updateNestedData(['product', 'roadmap'], newRoadmap);
+                      }}
+                      className="text-xs px-2 py-1 bg-[#fab049] text-[#B74B28] rounded border border-black"
+                    >
+                      <Plus size={12} />
+                    </button>
+                  </div>
+                  {roadmap.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-center gap-2">
+                      <input
+                        type="text"
+                        value={feature}
+                        onChange={(e) => {
+                          const newRoadmap = [...localData.product.roadmap];
+                          const newFeatures = [...roadmap.features];
+                          newFeatures[featureIndex] = e.target.value;
+                          newRoadmap[index] = { ...roadmap, features: newFeatures };
+                          updateNestedData(['product', 'roadmap'], newRoadmap);
+                        }}
+                        className="flex-1 p-1 border border-gray-300 rounded text-sm"
+                        placeholder="Feature name"
+                      />
+                      <button
+                        onClick={() => {
+                          const newRoadmap = [...localData.product.roadmap];
+                          const newFeatures = roadmap.features.filter((_, i) => i !== featureIndex);
+                          newRoadmap[index] = { ...roadmap, features: newFeatures };
+                          updateNestedData(['product', 'roadmap'], newRoadmap);
+                        }}
+                        className="p-1 bg-red-500 text-white rounded text-xs"
+                      >
+                        <Trash2 size={10} />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -770,46 +1144,6 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
     </div>
   );
 
-  const renderUsers = () => (
-    <div className="space-y-8">
-      <div className="bg-[#FFF1D6] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6">
-        <h2 className="text-2xl font-bold text-[#B74B28] mb-6">User Management</h2>
-        <p className="text-[#73430C] mb-6">Manage investor access and track engagement</p>
-        
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="bg-[#FAB049] border-2 border-black">
-                <th className="p-3 text-left font-bold text-[#B74B28] border-r-2 border-black">Name</th>
-                <th className="p-3 text-left font-bold text-[#B74B28] border-r-2 border-black">Email</th>
-                <th className="p-3 text-left font-bold text-[#B74B28] border-r-2 border-black">Role</th>
-                <th className="p-3 text-left font-bold text-[#B74B28] border-r-2 border-black">Last Access</th>
-                <th className="p-3 text-left font-bold text-[#B74B28] border-r-2 border-black">Documents</th>
-                <th className="p-3 text-left font-bold text-[#B74B28]">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {localData.users.map((user, index) => (
-                <tr key={user.id} className="border-b-2 border-black bg-white">
-                  <td className="p-3 border-r-2 border-black">{user.name}</td>
-                  <td className="p-3 border-r-2 border-black">{user.email}</td>
-                  <td className="p-3 border-r-2 border-black">{user.role}</td>
-                  <td className="p-3 border-r-2 border-black">{user.lastAccess}</td>
-                  <td className="p-3 border-r-2 border-black">{user.documentsAccessed}</td>
-                  <td className="p-3">
-                    <Badge variant={user.status === 'active' ? 'success' : 'warning'}>
-                      {user.status}
-                    </Badge>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  );
-
   const renderSection = () => {
     switch (activeSection) {
       case 'overview':
@@ -830,8 +1164,6 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
         return renderMetrics();
       case 'documents':
         return renderDocuments();
-      case 'users':
-        return renderUsers();
       default:
         return renderOverview();
     }
