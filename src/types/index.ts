@@ -26,6 +26,10 @@ export interface Metric {
   value: string;
   change: string;
   trend: 'up' | 'down' | 'stable';
+  category: 'revenue' | 'growth' | 'engagement' | 'financial';
+  description?: string;
+  chartData?: number[];
+  period?: string;
 }
 
 export interface TeamMember {

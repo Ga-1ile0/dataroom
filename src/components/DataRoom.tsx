@@ -32,6 +32,7 @@ import { Badge } from './ui/badge';
 import { Progress } from './ui/progress';
 import { SearchModal } from './SearchModal';
 import { DocumentManager } from './DocumentManager';
+import { MetricsChart } from './MetricsChart';
 
 interface DataRoomProps {
   companyData: CompanyData;
@@ -510,18 +511,8 @@ export const DataRoom: React.FC<DataRoomProps> = ({
     <div className="space-y-8">
       <div className="bg-[#FFF1D6] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 transform rotate-1">
         <h2 className="text-2xl font-bold text-[#B74B28] mb-6">Key Performance Indicators</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {companyData.metrics.map((metric, index) => (
-            <div
-              key={index}
-              className={`bg-[#7583FA] rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000] p-6 text-white text-center transform ${index % 2 === 0 ? "rotate-1" : "-rotate-1"}`}
-            >
-              <h3 className="text-lg font-bold mb-2">{metric.label}</h3>
-              <p className="text-2xl font-bold mb-2">{metric.value}</p>
-              <p className="text-sm opacity-90">{metric.change}</p>
-            </div>
-          ))}
-        </div>
+        <p className="text-[#73430C] mb-6">Real-time metrics showing platform growth and user engagement</p>
+        <MetricsChart metrics={companyData.metrics} />
       </div>
     </div>
   );

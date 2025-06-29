@@ -19,6 +19,7 @@ import {
 import { CompanyData } from '../types';
 import { Button } from './ui/button';
 import { DocumentManager } from './DocumentManager';
+import { MetricsChart } from './MetricsChart';
 
 interface AdminPanelProps {
   companyData: CompanyData;
@@ -958,14 +959,23 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
           <h3 className="text-xl font-bold text-[#B74B28]">Key Performance Indicators</h3>
           <Button 
             size="sm"
-            onClick={() => addArrayItem(['metrics'], { label: '', value: '', change: '', trend: 'up' })}
+            onClick={() => addArrayItem(['metrics'], { 
+              label: '', 
+              value: '', 
+              change: '', 
+              trend: 'up',
+              category: 'engagement',
+              description: '',
+              chartData: [],
+              period: 'Last 5 months'
+            })}
           >
             <Plus size={16} className="mr-2" />
             Add Metric
           </Button>
         </div>
         
-        <div className="space-y-4">
+        <div className="space-y-4 mb-6">
           {tempData.metrics.map((metric, index) => (
             <div key={index} className="p-4 bg-white rounded-[10px] border-2 border-black">
               <div className="flex items-center justify-between mb-3">
@@ -1020,9 +1030,61 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                     <option value="stable">Stable</option>
                   </select>
                 </div>
+                <div>
+                  <label className="block text-sm font-bold text-[#B74B28] mb-1">Category</label>
+                  <select
+                    value={metric.category}
+                    onChange={(e) => updateArrayItem(['metrics'], index, 'category', e.target.value)}
+                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                  >
+                    <option value="revenue">Revenue</option>
+                    <option value="growth">Growth</option>
+                    <option value="engagement">Engagement</option>
+                    <option value="financial">Financial</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-[#B74B28] mb-1">Period</label>
+                  <input
+                    type="text"
+                    value={metric.period || ''}
+                    onChange={(e) => updateArrayItem(['metrics'], index, 'period', e.target.value)}
+                    className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                    placeholder="e.g., Last 5 months"
+                  />
+                </div>
+              </div>
+              <div className="mt-3">
+                <label className="block text-sm font-bold text-[#B74B28] mb-1">Description</label>
+                <textarea
+                  value={metric.description || ''}
+                  onChange={(e) => updateArrayItem(['metrics'], index, 'description', e.target.value)}
+                  className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] resize-none"
+                  rows={2}
+                  placeholder="Brief description of this metric"
+                />
+              </div>
+              <div className="mt-3">
+                <label className="block text-sm font-bold text-[#B74B28] mb-1">Chart Data (comma-separated numbers)</label>
+                <input
+                  type="text"
+                  value={metric.chartData?.join(', ') || ''}
+                  onChange={(e) => {
+                    const values = e.target.value.split(',').map(v => parseFloat(v.trim())).filter(v => !isNaN(v));
+                    updateArrayItem(['metrics'], index, 'chartData', values);
+                  }}
+                  className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                  placeholder="e.g., 100, 120, 150, 180, 200"
+                />
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Preview */}
+        <div className="border-t-4 border-black pt-6">
+          <h4 className="text-lg font-bold text-[#B74B28] mb-4">Preview</h4>
+          <MetricsChart metrics={tempData.metrics} />
         </div>
       </div>
     </div>

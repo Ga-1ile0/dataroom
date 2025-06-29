@@ -142,10 +142,96 @@ export const mockCompanyData: CompanyData = {
     valuation: "$8M Pre-Money"
   },
   metrics: [
-    { label: 'Beta Families', value: '150', change: '+25%', trend: 'up' },
-    { label: 'Transactions Processed', value: '2,847', change: '+45%', trend: 'up' },
-    { label: 'Total Volume', value: '$12,450', change: '+67%', trend: 'up' },
-    { label: 'User Retention', value: '78%', change: '+12%', trend: 'up' }
+    { 
+      label: 'Monthly Active Users', 
+      value: '1,247', 
+      change: '+34%', 
+      trend: 'up',
+      category: 'engagement',
+      description: 'Families actively using the platform',
+      chartData: [850, 920, 1050, 1180, 1247],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Transaction Volume', 
+      value: '$47,230', 
+      change: '+67%', 
+      trend: 'up',
+      category: 'revenue',
+      description: 'Total USDC processed through platform',
+      chartData: [18500, 22100, 28900, 35600, 47230],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Average Transaction', 
+      value: '$16.58', 
+      change: '+12%', 
+      trend: 'up',
+      category: 'financial',
+      description: 'Mean transaction size per family',
+      chartData: [14.20, 14.80, 15.30, 15.90, 16.58],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'User Retention (30d)', 
+      value: '78%', 
+      change: '+8%', 
+      trend: 'up',
+      category: 'engagement',
+      description: '30-day user retention rate',
+      chartData: [65, 68, 72, 75, 78],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Chores Completed', 
+      value: '12,847', 
+      change: '+45%', 
+      trend: 'up',
+      category: 'engagement',
+      description: 'Total chores completed by children',
+      chartData: [6200, 7800, 9100, 10900, 12847],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Parent Satisfaction', 
+      value: '4.7/5', 
+      change: '+0.3', 
+      trend: 'up',
+      category: 'engagement',
+      description: 'Average parent rating of platform',
+      chartData: [4.2, 4.3, 4.4, 4.6, 4.7],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Cost Per Acquisition', 
+      value: '$23.50', 
+      change: '-18%', 
+      trend: 'up',
+      category: 'financial',
+      description: 'Cost to acquire new family',
+      chartData: [32.10, 28.90, 26.40, 24.80, 23.50],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Wallet Connections', 
+      value: '892', 
+      change: '+89%', 
+      trend: 'up',
+      category: 'growth',
+      description: 'Families with connected crypto wallets',
+      chartData: [245, 380, 520, 680, 892],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Daily Active Families', 
+      value: '423', 
+      change: '+28%', 
+      trend: 'up',
+      category: 'engagement',
+      description: 'Families using platform daily',
+      chartData: [280, 310, 350, 390, 423],
+      period: 'Last 5 months'
+    }
   ],
   documents: [
     {
