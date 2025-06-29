@@ -975,7 +975,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
           </Button>
         </div>
         
-        <div className="space-y-4 mb-6">
+        <div className="space-y-4">
           {tempData.metrics.map((metric, index) => (
             <div key={index} className="p-4 bg-white rounded-[10px] border-2 border-black">
               <div className="flex items-center justify-between mb-3">
@@ -1074,18 +1074,19 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                     updateArrayItem(['metrics'], index, 'chartData', values);
                   }}
                   className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
-                  placeholder="e.g., 100, 120, 150, 180, 200"
+                  placeholder="e.g., 850, 920, 1050, 1180, 1247"
                 />
               </div>
             </div>
           ))}
         </div>
+      </div>
 
-        {/* Preview */}
-        <div className="border-t-4 border-black pt-6">
-          <h4 className="text-lg font-bold text-[#B74B28] mb-4">Preview</h4>
-          <MetricsChart metrics={tempData.metrics} />
-        </div>
+      {/* Live Preview */}
+      <div className="bg-[#FFF1D6] p-6 rounded-[15px] border-4 border-black shadow-[5px_5px_0px_#000000]">
+        <h3 className="text-xl font-bold text-[#B74B28] mb-4">Live Preview</h3>
+        <p className="text-[#73430C] mb-6">This is how the metrics will appear to investors</p>
+        <MetricsChart metrics={tempData.metrics} />
       </div>
     </div>
   );

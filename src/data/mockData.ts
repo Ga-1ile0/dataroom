@@ -148,7 +148,7 @@ export const mockCompanyData: CompanyData = {
       change: '+34%', 
       trend: 'up',
       category: 'engagement',
-      description: 'Families actively using the platform',
+      description: 'Families actively using the platform monthly',
       chartData: [850, 920, 1050, 1180, 1247],
       period: 'Last 5 months'
     },
@@ -230,6 +230,156 @@ export const mockCompanyData: CompanyData = {
       category: 'engagement',
       description: 'Families using platform daily',
       chartData: [280, 310, 350, 390, 423],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Revenue Per User', 
+      value: '$37.89', 
+      change: '+23%', 
+      trend: 'up',
+      category: 'revenue',
+      description: 'Average revenue generated per family',
+      chartData: [24.50, 27.80, 31.20, 34.60, 37.89],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Churn Rate', 
+      value: '3.2%', 
+      change: '-1.8%', 
+      trend: 'up',
+      category: 'financial',
+      description: 'Monthly user churn rate',
+      chartData: [5.8, 5.1, 4.3, 3.7, 3.2],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Session Duration', 
+      value: '8.4 min', 
+      change: '+15%', 
+      trend: 'up',
+      category: 'engagement',
+      description: 'Average session length per user',
+      chartData: [6.2, 6.8, 7.3, 7.9, 8.4],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Feature Adoption', 
+      value: '67%', 
+      change: '+22%', 
+      trend: 'up',
+      category: 'engagement',
+      description: 'Users actively using core features',
+      chartData: [42, 48, 55, 61, 67],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Support Tickets', 
+      value: '12', 
+      change: '-35%', 
+      trend: 'up',
+      category: 'financial',
+      description: 'Monthly support requests per 100 users',
+      chartData: [28, 22, 18, 15, 12],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Referral Rate', 
+      value: '24%', 
+      change: '+18%', 
+      trend: 'up',
+      category: 'growth',
+      description: 'Users who refer new families',
+      chartData: [15, 17, 19, 22, 24],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Mobile App Usage', 
+      value: '73%', 
+      change: '+31%', 
+      trend: 'up',
+      category: 'engagement',
+      description: 'Sessions from mobile devices',
+      chartData: [45, 52, 59, 66, 73],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Crypto Education', 
+      value: '89%', 
+      change: '+12%', 
+      trend: 'up',
+      category: 'engagement',
+      description: 'Families completing education modules',
+      chartData: [72, 76, 81, 85, 89],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Savings Goals Met', 
+      value: '56%', 
+      change: '+19%', 
+      trend: 'up',
+      category: 'engagement',
+      description: 'Children reaching their savings targets',
+      chartData: [38, 42, 47, 52, 56],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'API Response Time', 
+      value: '127ms', 
+      change: '-23%', 
+      trend: 'up',
+      category: 'financial',
+      description: 'Average API response latency',
+      chartData: [185, 165, 148, 135, 127],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Network Fees Saved', 
+      value: '$2,847', 
+      change: '+156%', 
+      trend: 'up',
+      category: 'financial',
+      description: 'Gas fees saved using Base vs Ethereum',
+      chartData: [890, 1240, 1680, 2180, 2847],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Parent Engagement', 
+      value: '84%', 
+      change: '+16%', 
+      trend: 'up',
+      category: 'engagement',
+      description: 'Parents actively managing child accounts',
+      chartData: [68, 72, 76, 80, 84],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Gift Card Redemptions', 
+      value: '1,234', 
+      change: '+78%', 
+      trend: 'up',
+      category: 'revenue',
+      description: 'Gift cards purchased through platform',
+      chartData: [520, 680, 850, 1040, 1234],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Security Incidents', 
+      value: '0', 
+      change: '0%', 
+      trend: 'stable',
+      category: 'financial',
+      description: 'Security breaches or fund losses',
+      chartData: [0, 0, 0, 0, 0],
+      period: 'Last 5 months'
+    },
+    { 
+      label: 'Onboarding Time', 
+      value: '4.2 min', 
+      change: '-28%', 
+      trend: 'up',
+      category: 'engagement',
+      description: 'Time to complete family setup',
+      chartData: [6.8, 6.1, 5.4, 4.8, 4.2],
       period: 'Last 5 months'
     }
   ],
