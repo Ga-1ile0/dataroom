@@ -2,7 +2,15 @@
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'gatur': ['Gatur', 'Inter', 'system-ui', 'sans-serif'],
+        'sans': ['Gatur', 'Inter', 'system-ui', 'sans-serif'],
+      },
+      fontWeight: {
+        'black': '900',
+      }
+    },
   },
   plugins: [],
 };
