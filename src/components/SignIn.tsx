@@ -231,13 +231,6 @@ export const SignIn: React.FC<SignInProps> = ({ onAuthenticate }) => {
                         </p>
                     </div>
                 </div>
-
-                {/* Footer */}
-                <div className="mt-8 text-center">
-                    <p className="text-sm text-[#B74B28] opacity-75">
-                        © 2025 DataVaultBolt. All rights reserved.
-                    </p>
-                </div>
             </div>
         </div>
     );
