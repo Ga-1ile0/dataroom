@@ -151,8 +151,7 @@ export const mockCompanyData: CompanyData = {
       trend: 'up',
       category: 'revenue',
       description: 'Subscription revenue from active customers',
-      chartData: [18000, 22500, 28000, 34500, 40000],
-      period: 'Last 5 months'
+      chartData: [18000, 22500, 28000, 34500, 40000]
     },
     { 
       label: 'Active Data Rooms', 
@@ -161,8 +160,7 @@ export const mockCompanyData: CompanyData = {
       trend: 'up',
       category: 'engagement',
       description: 'Data rooms created and actively used',
-      chartData: [145, 180, 220, 280, 347],
-      period: 'Last 5 months'
+      chartData: [145, 180, 220, 280, 347]
     },
     { 
       label: 'Customer Acquisition Cost', 
@@ -171,8 +169,7 @@ export const mockCompanyData: CompanyData = {
       trend: 'up',
       category: 'financial',
       description: 'Cost to acquire new paying customer',
-      chartData: [280, 250, 220, 200, 180],
-      period: 'Last 5 months'
+      chartData: [280, 250, 220, 200, 180]
     },
     { 
       label: 'Net Revenue Retention', 
@@ -181,58 +178,7 @@ export const mockCompanyData: CompanyData = {
       trend: 'up',
       category: 'revenue',
       description: 'Revenue expansion from existing customers',
-      chartData: [115, 120, 125, 130, 134],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Documents Shared', 
-      value: '28,947', 
-      change: '+89%', 
-      trend: 'up',
-      category: 'engagement',
-      description: 'Total documents uploaded to platform',
-      chartData: [12400, 15800, 19200, 24100, 28947],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Investor Engagement', 
-      value: '87%', 
-      change: '+18%', 
-      trend: 'up',
-      category: 'engagement',
-      description: 'Investors actively viewing shared documents',
-      chartData: [68, 72, 78, 83, 87],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Average Deal Size', 
-      value: '$3,780', 
-      change: '+34%', 
-      trend: 'up',
-      category: 'revenue',
-      description: 'Average annual contract value',
-      chartData: [2400, 2680, 3020, 3380, 3780],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Platform Uptime', 
-      value: '99.97%', 
-      change: '+0.02%', 
-      trend: 'up',
-      category: 'financial',
-      description: 'System availability and reliability',
-      chartData: [99.92, 99.94, 99.95, 99.96, 99.97],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Time to First Share', 
-      value: '3.2 min', 
-      change: '-45%', 
-      trend: 'up',
-      category: 'engagement',
-      description: 'Time from signup to first document share',
-      chartData: [6.8, 5.9, 4.8, 3.9, 3.2],
-      period: 'Last 5 months'
+      chartData: [115, 120, 125, 130, 134]
     },
     { 
       label: 'Customer Satisfaction', 
@@ -241,8 +187,7 @@ export const mockCompanyData: CompanyData = {
       trend: 'up',
       category: 'engagement',
       description: 'Average customer rating and feedback',
-      chartData: [4.2, 4.3, 4.5, 4.7, 4.8],
-      period: 'Last 5 months'
+      chartData: [4.2, 4.3, 4.5, 4.7, 4.8]
     },
     { 
       label: 'Churn Rate', 
@@ -251,58 +196,7 @@ export const mockCompanyData: CompanyData = {
       trend: 'up',
       category: 'financial',
       description: 'Monthly customer churn percentage',
-      chartData: [5.2, 4.1, 3.3, 2.7, 2.1],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'API Requests', 
-      value: '1.2M', 
-      change: '+156%', 
-      trend: 'up',
-      category: 'engagement',
-      description: 'Monthly API calls from integrations',
-      chartData: [380000, 520000, 680000, 920000, 1200000],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Security Scans', 
-      value: '0', 
-      change: '0%', 
-      trend: 'stable',
-      category: 'financial',
-      description: 'Security vulnerabilities detected',
-      chartData: [0, 0, 0, 0, 0],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Feature Adoption', 
-      value: '73%', 
-      change: '+28%', 
-      trend: 'up',
-      category: 'engagement',
-      description: 'Users utilizing advanced features',
-      chartData: [48, 54, 61, 67, 73],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Mobile Usage', 
-      value: '42%', 
-      change: '+67%', 
-      trend: 'up',
-      category: 'engagement',
-      description: 'Sessions from mobile devices',
-      chartData: [18, 23, 29, 36, 42],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Data Transfer', 
-      value: '847 GB', 
-      change: '+123%', 
-      trend: 'up',
-      category: 'engagement',
-      description: 'Monthly data transferred through platform',
-      chartData: [280, 380, 520, 680, 847],
-      period: 'Last 5 months'
+      chartData: [5.2, 4.1, 3.3, 2.7, 2.1]
     },
     { 
       label: 'Conversion Rate', 
@@ -311,58 +205,7 @@ export const mockCompanyData: CompanyData = {
       trend: 'up',
       category: 'revenue',
       description: 'Trial to paid conversion percentage',
-      chartData: [12.8, 14.2, 15.7, 17.1, 18.4],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Support Response', 
-      value: '12 min', 
-      change: '-38%', 
-      trend: 'up',
-      category: 'engagement',
-      description: 'Average first response time',
-      chartData: [28, 23, 18, 15, 12],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Enterprise Deals', 
-      value: '23', 
-      change: '+92%', 
-      trend: 'up',
-      category: 'revenue',
-      description: 'Enterprise contracts signed',
-      chartData: [8, 11, 14, 18, 23],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Referral Revenue', 
-      value: '$12K', 
-      change: '+145%', 
-      trend: 'up',
-      category: 'revenue',
-      description: 'Revenue from customer referrals',
-      chartData: [3200, 4800, 6800, 9200, 12000],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Page Load Time', 
-      value: '0.8s', 
-      change: '-35%', 
-      trend: 'up',
-      category: 'financial',
-      description: 'Average page load performance',
-      chartData: [1.4, 1.2, 1.0, 0.9, 0.8],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Integration Usage', 
-      value: '67%', 
-      change: '+89%', 
-      trend: 'up',
-      category: 'engagement',
-      description: 'Customers using third-party integrations',
-      chartData: [28, 35, 45, 56, 67],
-      period: 'Last 5 months'
+      chartData: [12.8, 14.2, 15.7, 17.1, 18.4]
     },
     { 
       label: 'Fundraising Success', 
@@ -371,18 +214,7 @@ export const mockCompanyData: CompanyData = {
       trend: 'up',
       category: 'engagement',
       description: 'Customers who successfully raised funding',
-      chartData: [76, 79, 83, 86, 89],
-      period: 'Last 5 months'
-    },
-    { 
-      label: 'Team Collaboration', 
-      value: '4.2', 
-      change: '+31%', 
-      trend: 'up',
-      category: 'engagement',
-      description: 'Average team members per data room',
-      chartData: [2.8, 3.1, 3.5, 3.9, 4.2],
-      period: 'Last 5 months'
+      chartData: [76, 79, 83, 86, 89]
     }
   ],
   documents: [
