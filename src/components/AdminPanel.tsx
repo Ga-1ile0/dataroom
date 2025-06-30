@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
     Edit3,
-    Save,
     X,
     Plus,
     Trash2,
@@ -33,16 +32,30 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
     onSignOut
 }) => {
     const [activeTab, setActiveTab] = useState('overview');
-    const [editingField, setEditingField] = useState<string | null>(null);
+
     const [tempData, setTempData] = useState<CompanyData>(companyData);
-    const [saveStatus, setSaveStatus] = useState<'saved' | 'saving'>('saved');
-    
-    const handleManualSave = () => {
-        setSaveStatus('saving');
-        onUpdateData(tempData);
-        // Simulate network delay
-        setTimeout(() => setSaveStatus('saved'), 500);
-    };
+    const [saveStatus, setSaveStatus] = useState<'saved' | 'saving' | 'unsaved'>('saved');
+    const [saveTimeout, setSaveTimeout] = useState<NodeJS.Timeout | null>(null);
+
+    // Auto-save after 1 second of inactivity
+    useEffect(() => {
+        if (saveStatus === 'unsaved') {
+            if (saveTimeout) clearTimeout(saveTimeout);
+
+            const timeout = setTimeout(() => {
+                setSaveStatus('saving');
+                onUpdateData(tempData);
+                // Simulate network delay
+                setTimeout(() => setSaveStatus('saved'), 500);
+            }, 1000);
+
+            setSaveTimeout(timeout);
+
+            return () => {
+                if (saveTimeout) clearTimeout(saveTimeout);
+            };
+        }
+    }, [tempData, saveStatus, onUpdateData]);
 
     const tabs = [
         { id: 'overview', name: 'Overview', icon: Building },
@@ -61,73 +74,62 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
         setTempData(companyData);
     }, [companyData]);
 
-    const handleSave = (field: string) => {
-        setSaveStatus('saving');
-        onUpdateData(tempData);
-        setEditingField(null);
-        // Simulate network delay
-        setTimeout(() => setSaveStatus('saved'), 500);
-    };
 
-    const handleCancel = () => {
-        setTempData(companyData);
-        setEditingField(null);
-    };
 
-    const updateNestedField = useCallback((path: string[], value: any) => {
-        const newData = JSON.parse(JSON.stringify(tempData)); // Deep clone
-        let current: any = newData;
+    const updateNestedField = useCallback((path: (string | number)[], value: any) => {
+        setTempData(prevData => {
+            const newData = JSON.parse(JSON.stringify(prevData));
+            let current: any = newData;
+            for (let i = 0; i < path.length - 1; i++) {
+                current = current[path[i]];
+            }
+            current[path[path.length - 1]] = value;
+            return newData;
+        });
+        setSaveStatus('unsaved');
+    }, []);
 
-        for (let i = 0; i < path.length - 1; i++) {
-            current = current[path[i]];
-        }
+    const addArrayItem = useCallback((path: string[], newItem: any) => {
+        setTempData(prevData => {
+            const newData = JSON.parse(JSON.stringify(prevData));
+            let current: any = newData;
+            for (let i = 0; i < path.length - 1; i++) {
+                current = current[path[i]];
+            }
+            if (!Array.isArray(current[path[path.length - 1]])) {
+                current[path[path.length - 1]] = [];
+            }
+            current[path[path.length - 1]].push(newItem);
+            return newData;
+        });
+        setSaveStatus('unsaved');
+    }, []);
 
-        current[path[path.length - 1]] = value;
-        setTempData(newData);
-    }, [tempData]);
+    const removeArrayItem = useCallback((path: string[], index: number) => {
+        setTempData(prevData => {
+            const newData = JSON.parse(JSON.stringify(prevData));
+            let current: any = newData;
+            for (let i = 0; i < path.length - 1; i++) {
+                current = current[path[i]];
+            }
+            current[path[path.length - 1]].splice(index, 1);
+            return newData;
+        });
+        setSaveStatus('unsaved');
+    }, []);
 
-    const addArrayItem = (path: string[], newItem: any) => {
-        const newData = JSON.parse(JSON.stringify(tempData));
-        let current: any = newData;
-
-        for (let i = 0; i < path.length - 1; i++) {
-            current = current[path[i]];
-        }
-
-        if (!Array.isArray(current[path[path.length - 1]])) {
-            current[path[path.length - 1]] = [];
-        }
-
-        current[path[path.length - 1]].push(newItem);
-        setTempData(newData);
-        onUpdateData(newData);
-    };
-
-    const removeArrayItem = (path: string[], index: number) => {
-        const newData = JSON.parse(JSON.stringify(tempData));
-        let current: any = newData;
-
-        for (let i = 0; i < path.length - 1; i++) {
-            current = current[path[i]];
-        }
-
-        current[path[path.length - 1]].splice(index, 1);
-        setTempData(newData);
-        onUpdateData(newData);
-    };
-
-    const updateArrayItem = (path: string[], index: number, field: string, value: any) => {
-        const newData = JSON.parse(JSON.stringify(tempData));
-        let current: any = newData;
-
-        for (let i = 0; i < path.length - 1; i++) {
-            current = current[path[i]];
-        }
-
-        current[path[path.length - 1]][index][field] = value;
-        setTempData(newData);
-        onUpdateData(newData);
-    };
+    const updateArrayItem = useCallback((path: string[], index: number, field: string, value: any) => {
+        setTempData(prevData => {
+            const newData = JSON.parse(JSON.stringify(prevData));
+            let current: any = newData;
+            for (let i = 0; i < path.length - 1; i++) {
+                current = current[path[i]];
+            }
+            current[path[path.length - 1]][index][field] = value;
+            return newData;
+        });
+        setSaveStatus('unsaved');
+    }, []);
 
     const EditableField = React.memo(({
         label,
@@ -138,54 +140,53 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
     }: {
         label: string;
         value: string;
-        path: string[];
+        path: (string | number)[];
         multiline?: boolean;
         type?: string;
     }) => {
         const [localValue, setLocalValue] = useState(value);
-        const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
 
-        // Only update local value if prop value changes from outside
+        // Use a generic ref and then cast it where needed.
+        const inputRef = useRef<HTMLInputElement & HTMLTextAreaElement>(null);
+
         useEffect(() => {
-            if (inputRef.current !== document.activeElement) {
+            // Only update local state if the external value changes and the input is not focused.
+            if (document.activeElement !== inputRef.current) {
                 setLocalValue(value);
             }
         }, [value]);
 
-        const handleChange = (newValue: string) => {
-            setLocalValue(newValue);
-            // Update parent state
-            const newData = JSON.parse(JSON.stringify(tempData));
-            let current: any = newData;
-            
-            for (let i = 0; i < path.length - 1; i++) {
-                current = current[path[i]];
+        const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+            setLocalValue(e.target.value);
+        };
+
+        const handleBlur = () => {
+            // If the value has changed, call the update function.
+            if (localValue !== value) {
+                const finalValue = type === 'number' ? parseFloat(localValue) || 0 : localValue;
+                updateNestedField(path, finalValue);
             }
-            
-            current[path[path.length - 1]] = type === 'number' ? parseFloat(newValue) || 0 : newValue;
-            setTempData(newData);
         };
 
         return (
             <div className="mb-4">
-                <div className="flex items-center justify-between mb-2">
-                    <label className="text-sm font-bold text-[#B74B28]">{label}</label>
-                </div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
                 {multiline ? (
                     <textarea
-                        ref={inputRef as React.RefObject<HTMLTextAreaElement>}
+                        ref={inputRef}
                         value={localValue}
-                        onChange={(e) => handleChange(e.target.value)}
-                        className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049] resize-none"
-                        rows={3}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        className="w-full p-2 border-2 border-black rounded-[10px] bg-white"
                     />
                 ) : (
                     <input
-                        ref={inputRef as React.RefObject<HTMLInputElement>}
+                        ref={inputRef}
                         type={type}
                         value={localValue}
-                        onChange={(e) => handleChange(e.target.value)}
-                        className="w-full p-2 border-2 border-black rounded-[8px] focus:outline-none focus:border-[#fab049]"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        className="w-full p-2 border-2 border-black rounded-[10px] bg-white"
                     />
                 )}
             </div>
@@ -1231,27 +1232,16 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                 </div>
 
                 <div className="flex items-center gap-4">
-                    <Button 
-                        onClick={handleManualSave}
-                        disabled={saveStatus === 'saving'}
-                        variant={saveStatus === 'saved' ? 'outline' : 'default'}
-                        className="flex items-center gap-2"
-                    >
-                        {saveStatus === 'saving' ? (
-                            <>
-                                <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                </svg>
-                                Saving...
-                            </>
-                        ) : (
-                            <>
-                                <Save size={16} />
-                                Save Changes
-                            </>
-                        )}
-                    </Button>
+                    <div className="flex items-center gap-2 text-sm bg-white/50 px-3 py-1.5 rounded-full border border-black/10">
+                        <div className={`w-2.5 h-2.5 rounded-full ${
+                            saveStatus === 'saved' ? 'bg-green-500' :
+                                saveStatus === 'saving' ? 'bg-yellow-500' : 'bg-gray-400'
+                            }`} />
+                        <span className="text-gray-700">
+                            {saveStatus === 'saved' ? 'All changes saved' :
+                                saveStatus === 'saving' ? 'Saving...' : 'Unsaved changes'}
+                        </span>
+                    </div>
                     <Button onClick={onSignOut} variant="outline">
                         Sign Out
                     </Button>
