@@ -125,7 +125,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
         id: 'metrics',
         name: 'Metrics',
         content: [
-          ...companyData.metrics.map(m => `${m.label} ${m.value}`),
+          ...(Array.isArray(companyData.metrics) ? companyData.metrics.map(m => `${m.label} ${m.value}`) : []),
           'kpi', 'performance', 'analytics', 'growth'
         ].join(' ')
       }
