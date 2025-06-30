@@ -13,6 +13,22 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
 
+  // Helper function to validate and fix company data structure
+  const validateCompanyData = (data: any): CompanyData => {
+    // Ensure metrics is always an array
+    if (!data.metrics || !Array.isArray(data.metrics)) {
+      data.metrics = mockCompanyData.metrics;
+    }
+    
+    // Ensure other required properties exist
+    if (!data.company) data.company = mockCompanyData.company;
+    if (!data.documents) data.documents = mockCompanyData.documents;
+    if (!data.team) data.team = mockCompanyData.team;
+    if (!data.financials) data.financials = mockCompanyData.financials;
+    
+    return data as CompanyData;
+  };
+
   // Load data from Supabase on mount
   useEffect(() => {
     const initializeApp = async () => {
@@ -32,7 +48,8 @@ export default function App() {
         try {
           const result = await loadCompanyData();
           if (result.success && result.data) {
-            setCompanyData(result.data);
+            const validatedData = validateCompanyData(result.data);
+            setCompanyData(validatedData);
           } else {
             // If no data in Supabase, save the mock data
             await saveCompanyData(mockCompanyData);
@@ -44,7 +61,8 @@ export default function App() {
           if (savedData) {
             try {
               const parsedData = JSON.parse(savedData);
-              setCompanyData(parsedData);
+              const validatedData = validateCompanyData(parsedData);
+              setCompanyData(validatedData);
             } catch (error) {
               console.error('Error parsing saved data:', error);
             }
@@ -97,15 +115,16 @@ export default function App() {
   };
 
   const handleUpdateData = async (newData: CompanyData) => {
-    setCompanyData(newData);
+    const validatedData = validateCompanyData(newData);
+    setCompanyData(validatedData);
     
     // Save to Supabase
     try {
-      await saveCompanyData(newData);
+      await saveCompanyData(validatedData);
     } catch (error) {
       console.error('Error saving to Supabase:', error);
       // Fallback to localStorage
-      localStorage.setItem('dataroom_data', JSON.stringify(newData));
+      localStorage.setItem('dataroom_data', JSON.stringify(validatedData));
     }
   };
 
