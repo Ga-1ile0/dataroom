@@ -1233,8 +1233,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
 
                 <div className="flex items-center gap-4">
                     <div className="flex items-center gap-2 text-sm bg-white/50 px-3 py-1.5 rounded-full border border-black/10">
-                        <div className={`w-2.5 h-2.5 rounded-full ${
-                            saveStatus === 'saved' ? 'bg-green-500' :
+                        <div className={`w-2.5 h-2.5 rounded-full ${saveStatus === 'saved' ? 'bg-green-500' :
                                 saveStatus === 'saving' ? 'bg-yellow-500' : 'bg-gray-400'
                             }`} />
                         <span className="text-gray-700">
@@ -1257,8 +1256,8 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id)}
                                 className={`w-full flex items-center gap-3 p-3 rounded-[10px] border-2 border-black transition-all transform hover:scale-105 ${activeTab === tab.id
-                                        ? "bg-[#FAB049] text-[#B74B28] shadow-[3px_3px_0px_#000000] rotate-1"
-                                        : "bg-white text-[#73430C] hover:bg-[#FAB049] -rotate-1"
+                                    ? "bg-[#FAB049] text-[#B74B28] shadow-[3px_3px_0px_#000000] rotate-1"
+                                    : "bg-white text-[#73430C] hover:bg-[#FAB049] -rotate-1"
                                     }`}
                             >
                                 <tab.icon size={20} />
