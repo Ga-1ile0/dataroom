@@ -217,6 +217,21 @@ export const SignIn: React.FC<SignInProps> = ({ onAuthenticate }) => {
                             </span>
                         </div>
                     )}
+
+                    {/* Access Codes Footnote */}
+                    <div className="mt-6 pt-4 border-t-2 border-[#B74B28] border-dashed">
+                        <div className="text-center space-y-2">
+                            <p className="text-xs text-[#B74B28] font-bold mb-2">Demo Access Codes:</p>
+                            <div className="space-y-1">
+                                <p className="text-xs text-[#73430C] font-mono">
+                                    <span className="font-bold">Investor:</span> INV2024ABC
+                                </p>
+                                <p className="text-xs text-[#73430C] font-mono">
+                                    <span className="font-bold">Admin:</span> ADM2024XYZ
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Info */}
